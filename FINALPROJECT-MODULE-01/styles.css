@@ -1,0 +1,634 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.container {
+    width: 1170px;
+    margin: auto;
+
+}
+.navigation-bar {
+    display: flex;
+    background: rgba(255, 255, 255, 1);
+    display: flex; 
+    align-items: center;  
+    justify-content: space-between; 
+}
+.main-logo {
+    font-size: 28px;
+    text-decoration: none;
+    font-family: 'Hind', sans-serif;
+    font-weight: 600;
+    color: rgba(45, 55, 72, 1);
+    /* margin-left: 98px; */
+}
+.logo-icon {
+    text-decoration: none;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    color: rgba(90, 103, 216, 1);
+}
+.main-menu {
+    display: flex;
+    list-style-type: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+   
+}
+.menu-item active {
+    color: rgba(90, 103, 216, 1);
+}
+.menu-item {
+    font-family: 'Hind',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(113, 128, 150, 1);  
+    margin-right: 12px;
+    margin-left: 12px;
+}
+.menu-link {
+    text-decoration: none;  
+    color: rgba(113, 128, 150, 1);
+}
+/* FEATURED-CATEGORIES */
+#featured-categories {
+    background-color: rgba(244, 244, 244, 1);
+}
+.featured-categories-wrapper {
+    display: flex;  
+    padding-top: 72px;
+    /* background-color: blue; */
+    /* margin-left: ; */
+    padding-bottom: 72px;
+    /* width: 100%; */
+    margin-left: -15px;  
+    margin-right: -15px;  
+    justify-content: center;
+
+}
+.featured-category-content {
+    text-decoration: none;
+    color: rgba(113, 128, 150, 1);
+    font-family: 'Hind',sans-serif;
+    font-weight: 700;
+
+}
+.featured-category-icon {
+    color: rgba(90, 103, 216, 1);
+    font-size: 26px;
+}
+.featured-category-item {
+    border-radius: 15px;
+    width: 270px;
+    background: rgba(255, 255, 255, 1);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 15px;  
+    margin-right: 15px; 
+}   
+/* HERO ARTICLE */
+#hero-article {
+    background-color: rgba(244, 244, 244, 1);
+}
+.hero-article-wrapper {
+    display: flex;
+    width: 100%;
+    /* margin-top: 72px;  */
+    padding-bottom: 96px;
+
+    /* p-right: 70px; */
+    /* background-color: rgba(244, 244, 244, 1); */
+
+}
+.hero-article-thumb {
+    height: 100%;
+    border-radius: 15px;
+    height: 460px;
+}
+.category-label {
+    font-family: 'Hind',sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgba(90, 103, 216, 1);
+    background: rgba(90, 103, 216, 0.05);
+    border-radius: 15px;
+    padding: 5px 20px;
+    margin-top: 60px;
+}
+.hero-article-title {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    color: rgba(45, 55, 72, 1);
+    margin-top: 24px;
+}
+.hero-article-description {
+    font-family: 'Hind',sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(113, 128, 150, 1);
+    margin-top: 24px;
+}
+/* NỔI BẬT TRONG THÁNG */
+#top-pick-article .container {
+    margin-top: 96px;
+    margin-bottom: 96px;
+}
+.top-pick-article-wrapper {
+    display: flex;
+
+}
+.top-pick-article-thumb {
+    height: 100%;
+    width: 370px;
+    height: 460px;
+    
+}
+.top-pick-article-heading {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(45, 55, 72, 1);
+    /* margin-top: 96px; */
+  margin-bottom: 40px;
+}
+.top-pick-article-wrapper {
+    width: 100%;
+    display:flex;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.top-pick-article-thumb {
+    height: 100%;
+    border-radius: 15px;
+    /* margin-right: 15px; */
+    /* margin-left: 15px; */
+}
+.top-pick-article-content {
+    position: relative;
+}
+.top-pick-article-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* left: 40px; */
+    /* right: 40px; */
+    top: 230px;
+}
+.top-pick-article-title {
+    width: 100%; 
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.top-pick-article-link {
+    /* position: absolute;  */
+    text-decoration: none;
+    color:rgba(255, 255, 255, 1);
+    font-family: 'Hind',sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    /* margin-bottom: 40px; */
+    /* bottom: 40px */
+}
+.top-pick-article-meta {
+    /* padding-bottom: 40px;  */
+    display: flex;
+    padding-top: 16px;
+    margin-left: 40px;
+    margin-right: 40px;
+    /* padding-bottom: 40px;  */
+}
+.top-pick-article-author-avatar {
+    border: 2px solid rgba(153, 153, 153, 1);
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.top-pick-article-author-name {
+    font-family: 'Hind',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1);
+}
+.top-pick-article-date {
+    font-family: 'Hind',sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+
+}
+/* FASHION AND STYLE */
+#fashion-style-article {
+    background: rgba(248, 249, 250, 1);
+}
+#fashion-style-article .container {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    justify-content: space-around;
+}
+.fashion-style-article-heading {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(45, 55, 72, 1);
+    justify-content: space-between;
+    padding-bottom: 43px;
+    display: flex;
+}
+.btn-view-more {
+    text-decoration: none;
+    font: 'Hind' ,sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(113, 128, 150, 1);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: rgba(226, 232, 240, 1);
+    border-radius: 15px;
+    /* justify-content: space-around; */
+}
+.fashion-style-article-item {
+    border-radius: 15px;
+    /* margin-left: -15px; */
+    /* margin-right: -15px; */
+}
+.fashion-style-article-thumb {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.fashion-style-article-content {
+    padding-left: 15px;
+    padding-right: 15px; 
+    /* margin-left: 15px; */
+    /* margin-right: 15px; */
+    /* margin-left: -15px; */
+    /* margin-right: -15px; */
+}
+.fashion-style-article-info {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgba(255, 255, 255, 1);
+    padding: 25px;
+}
+.fashion-style-article-title {
+    padding-bottom: 16px;
+}
+.fashion-style-article-link {
+    text-decoration: none;
+    font-family: 'Hind',sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgba(45, 55, 72, 1);
+    /* background-color: #fff; */
+}
+.fashion-style-article-meta {
+    display: flex;
+    /* margin-top: 16px; */
+}
+.fashion-style-article-author-name {
+    font-family: 'Hind',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(45, 55, 72, 1);
+}
+.fashion-style-article-date {
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(113, 128, 150, 1);
+}
+.fashion-style-article-author-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.fashion-style-article-wrapper {
+    display: flex;
+    width: 100%;
+    /* margin-left: -15px; */
+    /* margin-right: -15px; */
+    /* justify: center */
+    padding-left: -15px;
+    padding-right: -15px;
+}
+.fashion-style-article-thumb {
+    width: 100%;
+}
+/* PHẦN BEAUTY  */
+.beauty-article-wrapper {
+    /* display: flex;  */
+    margin-right: -30px;
+    width: 100%;
+}
+.beauty-article-item {
+    display: flex;
+}
+.beauty-article-content {
+    width: 50%; 
+    /* height: 25%; */
+    margin-top: 30px;
+    /* margin-right: 30px;   */
+}
+#beauty-article {
+    background: rgba(244, 244, 244, 1);
+}
+#beauty-article .container {
+    padding-top: 96px;
+    padding-bottom: 66px;   
+}
+.beauty-article-heading {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(45, 55, 72, 1);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.beauty-article-content {
+    display: flex;
+
+}
+.beauty-article-thumb {
+    /* height: 250px; */
+    width : 238px;
+    /* width: 100%; */
+    /* width : 238px; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    overflow: hidden;
+}
+.beauty-article-info {
+    height: 250px;
+    width: 333px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    background-color: rgba(255, 255, 255, 1);   
+}
+.beauty-article-title {
+    /* white-space: nowrap; */
+}
+.beauty-article-link {
+    font-family: 'Hind',sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgba(45, 55, 72, 1);
+    text-decoration: none;
+} 
+.beauty-article-meta {
+    display: flex;
+    margin-top: 16px;
+    /* margin-bottom: 40px; */
+    white-space: nowrap;
+}
+.beauty-article-author-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right: 10px;
+    /* margin-top: ; */
+}
+.beauty-article-author-name {
+    font-family: 'Hind',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(45, 55, 72, 1);
+}
+.beauty-article-date {
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(113, 128, 150, 1);
+}
+/* PHẦN TRENDING */
+#trending-article {
+    background: rgba(248, 249, 250, 1);
+}
+.container-fluid {
+    padding-top: 96px;
+    padding-bottom: 135px;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+.trending-article-heading {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-size: 26px;
+    color: rgba(45, 55, 72, 1);
+    padding-bottom: 40px;
+    /* margin-left: 48px; */
+    
+}
+.trending-article-wrapper {
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+    
+}
+
+.trending-article-item {
+    width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.trending-article-content {
+    display: flex;
+    /* border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px; */
+    /* background-color: red; */
+    /* height: 373px; */
+
+    /* width: 620px;  */
+
+    /* padding-left: 33px; */
+}
+.trending-article-thumb {
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    overflow: hidden;
+}
+.trending-article-info {
+    /* overflow: hidden; */
+    /* margin-right: 15px; */
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.trending-article-title {
+    margin-top: 16px;
+}
+.trending-article-link {
+    /* padding-top: 16px; */
+    /* margin-top: 16px; */
+    font-family: 'Hind',sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: rgba(45, 55, 72, 1);
+    text-decoration: none;
+}
+.trending-article-description {
+    margin-top: 16px;
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(113, 128, 150, 1);
+}
+.trending-article-meta {
+    display: flex;
+    margin-top: 16px;
+}
+.trending-article-author-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right: 10px;
+    /* margin-top: ; */
+}
+.trending-article-author-name {
+    font-family: 'Hind',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(45, 55, 72, 1);
+}
+.trending-article-date {
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(113, 128, 150, 1);
+}
+/* PHẦN SUBSCRIBE */
+#subscribe {
+    background: rgba(244, 244, 244, 1);
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+
+
+.subscribe-content {
+    /* margin-top: 96px; */
+    /* margin-bottom: 96px; */
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 1);
+    /* background-color: red;  */
+    text-align: center;
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+.subscribe-heading {
+    font-family: 'Libre Baskervilla',sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(45, 55, 72, 1);
+    /* margin-top: 96px; */
+
+}
+.subscribe-description {
+    color: rgba(113, 128, 150, 1);
+    font-size: 18px;
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.subscribe-input-email {
+    background: rgba(244, 244, 244, 1);
+    border: none;
+    border-radius: 6px;
+    height: 50px;
+    width: 400px;
+    padding-left: 20px;
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+.btn-subscribe {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    background: rgba(90, 103, 216, 1);
+    border-radius: 6px;
+    padding: 17px 35px;
+    border: none;
+}
+/* TRANG CUOI CUNG */
+.footer-wrapper {
+    display: flex;
+    /* justify-content: space-between; */
+}
+.footer-right {
+    margin-top: 64px;
+    margin-bottom: 70px;
+    /* margin-right: 100px; */
+    margin-left: 185px;
+    /* justify-content: center; */
+}
+.footer-right-content {
+    display: flex;
+    justify-content: center;
+}
+.footer-left {
+    margin-top: 64px;
+    margin-bottom: 125px; 
+}
+.footer-list-wrapper {
+    text-decoration-style: none;
+    /* background-color: red; */
+    margin-right: 100px;
+}
+.footer-title {
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(45, 55, 72, 1);
+    white-space: nowrap;
+    margin-bottom: 15px;
+}
+.footer-list-item {
+    list-style-type: none;
+}
+.footer-link {
+    text-decoration: none;
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(113, 128, 150, 1);
+    white-space: nowrap;
+    margin-top: 5px;
+}
+.all-rights-reserved {
+    font-family: 'Hind',sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(113, 128, 150, 1);
+    /* margin-top: 16px; */
+    margin-bottom: 8px;
+    white-space: nowrap;    
+}
+.design-by {
+    /* margin-bottom: 125px; */
+    font-family: 'Libre Baskerville',sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(45, 55, 72, 1);
+    white-space: nowrap;
+}
+.design-by-company {
+    color: rgba(90, 103, 216, 1);
+    white-space: nowrap;
+}
+  
