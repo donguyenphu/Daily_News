@@ -26,47 +26,58 @@ const id=urlParams.get('id');
 const articlesMain=document.getElementById('articlesMain');
 const myPagination=document.getElementById('myPagination');
 const overCategoryName=document.getElementById('overCategoryName');
-// RENDER MENUS
+const FullSubscribeFollowers=document.getElementById('FullSubscribeFollowers');
+const FullRecentPosts=document.getElementById('FullRecentPosts');
+const RecentNews=document.getElementById('RecentNews');
 
-// let first=parseInt(urlParams.get('page')); ///////
 let first=parseInt(urlParams.get('page'));
 if (isNaN(first) === true) {
-    // neo 
-    // console.log('FALSE:::::');
     first=1;   
 }
 if (isNaN(parseInt(id))) {
     window.location.href="index.html";
 }
-
-console.log('PAGESSSSSSSS:',first,'AND:',id);
-
-
 getArticles(first);
 
-
-API.call().get('categories_news').then(function(res) {
-    console.log('FOR NOW: ',res);
-    const articles=res.data.data;
-    console.log(articles);
-    let html='';
-    let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
-                    <ul class="sub-menu">`;
-    articles.forEach((item,index) => {
-       if (index < 3) {
-            html+=
-            /* html */
-            `<li><a href="#">${item.name}</a></li>`;
-        }
-        else {
-            /* html */
-            html2+=`<li><a href="#">${item.name}</a></li>`
-        }
-    });
-    html2+=`</ul>
-        </li>`;
-    menuFull.innerHTML=html+html2;
-});
+FullSubscribeFollowers.innerHTML=
+`
+    <div class="widget-title mb-25">
+        <h2 class="title">Mạng xã hội</h2>
+        <div class="section-title-line"></div>
+    </div>
+    <div class="sidebar-social-wrap">
+        <ul class="list-wrap">
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-facebook-f"></i>facebook</a></li>
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-twitter"></i>twitter</a></li>
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-instagram"></i>instagram</a></li>
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-youtube"></i>youtube</a></li>
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-linkedin-in"></i>LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
+        </ul>
+    </div>
+`;
+// API.call().get('categories_news').then(function(res) {
+//     console.log('FOR NOW: ',res);
+//     const articles=res.data.data;
+//     console.log(articles);
+//     let html='';
+//     let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
+//                     <ul class="sub-menu">`;
+//     articles.forEach((item,index) => {
+//        if (index < 3) {
+//             html+=
+//             /* html */
+//             `<li><a href="#">${item.name}</a></li>`;
+//         }
+//         else {
+//             /* html */
+//             html2+=`<li><a href="#">${item.name}</a></li>`
+//         }
+//     });
+//     html2+=`</ul>
+//         </li>`;
+//     menuFull.innerHTML=html+html2;
+// });
 
 /// RENDER CATEGORIES
 
@@ -115,18 +126,70 @@ API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res 
 
 myPagination.addEventListener('click', function(e) {
     const el=e.target;
-    if (el.classList.contains('page-item')) {
+    if (el.classList.contains('pageItem')) {
         first=parseInt(el.innerText);
         mergeAndPush(first);
     }
-    else if (el.classList.contains('page-item-prev') === true) {
+    else if (el.classList.contains('prev') === true) {
+        mergeAndPush(first); /// tao trang moi  
         first--;
-        mergeAndPush(first); /// tao trang moi
+        console.log('PAGES:::',first);
+       
     }
-    else if (el.classList.contains('page-item-next') === true) {
-        first++;
+    else if (el.classList.contains('next') === true) {
         mergeAndPush(first);
+        first++;
+        console.log('PAGES:::',first);
+        // mergeAndPush(first);
     }
+});
+
+
+API.call().get('articles/popular?limit=3').then(function(res) {
+    let html='';
+    const articles=res.data.data;
+    let htmlFirst='';
+    let htmlRemain='';
+    articles.forEach((item,index) => {
+        if (index === 0) {
+            htmlFirst+=/* html */
+            `
+            <div class="hot-post-item">
+                <div class="hot-post-thumb">
+                    <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                </div>
+                <div class="hot-post-content">
+                    <a href="blog.html" class="post-tag">${item.category.name}</a>
+                    <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
+                    <div class="blog-post-meta">
+                        <ul class="list-wrap">
+                            <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                            <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+        else {
+            htmlRemain+=/* html */
+            `
+                <div class="hot-post-item">
+                    <div class="hot-post-content">
+                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
+                        <div class="blog-post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                                <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    });
+    FullRecentPosts.innerHTML=htmlFirst+htmlRemain;
 });
 
 
@@ -202,4 +265,7 @@ function renderPagination(total) {
     }
     html+=`<a href="#" class="prev ${disNex}">Next</a>`;
     myPagination.innerHTML=html;
+
+
+    // console.log('MYPAGINATIONHTML:::',myPagination.innerHTML);
 }

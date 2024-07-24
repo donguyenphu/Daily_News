@@ -7,39 +7,6 @@ class Footer extends HTMLElement {
         this.innerHTML=
         /* html */
         `
-        <section class="newsletter-area-three">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="newsletter-wrap-three" id="SubmitForm">
-                            <div class="newsletter-content">
-                                <h2 class="title" id="">Cập nhật tin tức mới nhất</h2>
-                            </div>
-                            <div class="newsletter-form">
-                                <form action="#">
-                                    <div class="form-grp">
-                                        <input type="text" placeholder="Tên" id="LoginName">
-                                    </div>
-                                    <div class="form-grp">
-                                        <input type="email" placeholder="Email" id="LoginEmail">
-                                    </div>
-                                    <button type="submit" class="btn" href="index.html">Đăng nhập ngay</button>
-                                </form>
-                            </div>
-                            <div class="newsletter-social">
-                                <h4 class="title" >Theo dõi tôi tại:</h4>
-                                <ul class="list-wrap">
-                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <footer>
             <div class="footer-area">
                 <div class="footer-top">

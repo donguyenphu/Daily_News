@@ -271,84 +271,41 @@
             </div>
             <!-- breadcrumb-area-end -->
 
-            <!-- contact-area -->
-            <section class="contact-area pt-80 pb-50">
-                <div class="container"  id="RegisterFullForm">
-                    <div class="contact-info-wrap">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="contact-info-item">
-                                    <div class="icon">
-                                        <img src="assets/img/icon/contact_icon01.svg" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Location</h5>
-                                        <p>2118 Thornridge Cir. Syracuse</p>
-                                    </div>
-                                </div>
+            <!-- LOGIN-area -->
+        <section class="newsletter-area-three">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="newsletter-wrap-three" id="SubmitForm">
+                            <div class="newsletter-content">
+                                <h2 class="title" id="">Cập nhật tin tức mới nhất</h2>
                             </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="contact-info-item">
-                                    <div class="icon">
-                                        <img src="assets/img/icon/contact_icon02.svg" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">E-mail</h5>
-                                        <p>Info@ghoradimgmail.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="contact-info-item">
-                                    <div class="icon">
-                                        <img src="assets/img/icon/contact_icon03.svg" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Phone</h5>
-                                        <p>+123 98598 000, +123 8855 2222</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6 col-md-10">
-                            <div class="contact-img">
-                                <img src="./assets/img/login/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="contact-form">
-                                <h4 class="title">Drop Us a Message</h4>
-                                <p>Have a question? Need help? Don't hesitate, drop us a line</p>
-                                <form id="contact-form" action="assets/mail.php" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <input type="text" name="name" placeholder="Name*">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-grp">
-                                                <input type="email" name="email" placeholder="E-mail*">
-                                            </div>
-                                        </div>
+                            <div class="newsletter-form">
+                                <form action="#">
+                                    <div class="form-grp">
+                                        <input type="text" placeholder="Tên" id="LoginName">
                                     </div>
                                     <div class="form-grp">
-                                        <input type="number" name="phone" placeholder="Phone*">
+                                        <input type="email" placeholder="Email" id="LoginEmail">
                                     </div>
-                                    <div class="form-grp">
-                                        <textarea name="message" placeholder="Message*"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-two">Submit Now</button>
+                                    <button type="submit" class="btn" href="index.html">Đăng nhập ngay</button>
                                 </form>
-                                <p class="ajax-response mb-0"></p>
+                            </div>
+                            <div class="newsletter-social">
+                                <h4 class="title" >Theo dõi tôi tại:</h4>
+                                <ul class="list-wrap">
+                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- contact-area-end -->
+            </div>
+        </section>
+            <!-- LOGIN-area-end -->
 
             <!-- contact-map -->
             <div class="contact-map" id="GoogleMap">
@@ -424,7 +381,12 @@
         <!-- FILE WRITING -->
         <script src="./JS_MAIN/Header.js"></script>
         <script src="./JS_MAIN/Footer.js"></script>
-
+        <!-- START FOR THE TOASTIFY JS -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <!-- END FILE TOASTIFY JS -->
+        <!-- START FILE CKE -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+        <!-- END FILE CKE -->  
         <script src="./JS_MAIN/general.js"></script>
         <script src="./JS_MAIN/menu.js"></script>
         <script src="./JS_MAIN/contact.js"></script>
