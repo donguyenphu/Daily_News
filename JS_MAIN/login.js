@@ -1,5 +1,5 @@
-API.callWithToken().get('/auth/me').then((res) => {
+API.callWithToken().get('/auth/me').then((res) {
+        
+}).catch((err) {
     window.location.href='index.html';
-}).catch((err) => {
-    toastMessage("THÔNG TIN ĐĂNG NHẬP KHÔNG HỢP LỆ");
 });

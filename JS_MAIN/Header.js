@@ -6,6 +6,7 @@ class Header extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML=
+        /* html */
         `
            <header class="header-style-three">
             <div id="header-fixed-height"></div>
@@ -99,9 +100,8 @@ class Header extends HTMLElement {
                                                 <a href="#"><i class="flaticon-basket"></i><span>0</span></a>
                                                 <strong>$0.00</strong>
                                             </li>
-                                            <li class="header-sine-in d-flex gap-3">
-                                                <a href="login.html"><i class="flaticon-user"></i>Đăng nhập</a>
-                                                <a href="contact.html"><i class="flaticon-user"></i>Đăng kí</a>
+                                            <li class="header-sine-in">
+                                                <a href="contact.html"><i class="flaticon-user"></i>Sign In</a>
                                             </li>
                                         </ul>
                                     </div>
