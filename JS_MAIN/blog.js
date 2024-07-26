@@ -108,20 +108,22 @@ myPagination.addEventListener('click', function (e) {
         getArticles(first);
     }
     if (el.classList.contains('page-item-prev') === true) {
+        getArticles(first);
         first--;
         console.log('prevvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv:', first);
-        getArticles(first);
+        // getArticles(first);
     }
     if (el.classList.contains('page-item-next') === true) {
+        getArticles(first);s
         first++;
         console.log('nexxxxxxxxxxxxxxxxxxxx', first);
-        getArticles(first);
+        
     }
 });
 
-function renderPagination(total) {
-    const disPrev = (first === 0 ? 'pointer-events-none' : '');
-    const disNex = (first === total+1 ? 'pointer-events-none' : '');
+function renderPagination(total,first) {
+    const disPrev = (first === 1 ? 'pointer-events-none' : '');
+    const disNex = (first === total ? 'pointer-events-none' : '');
     myPagination.innerHTML = '';
     let html = `<a class="page-item-prev page-link ${disPrev}">Previous</a>`;
     for (let index = 1; index <= total; index++) {
@@ -136,17 +138,20 @@ function renderPagination(total) {
 }
 
 function getArticles(first) {
-    urlParams.set('page', first);
-    let newPageLink = window.location.pathname + "?" + urlParams.toString();
-    history.pushState(null, "", newPageLink);
+   
 
     API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res => {
         const articles = res.data.data;
         let html = '';
         let totalPages = res.data.meta.total;
+        if (first >= 1 && first <= totalPages) {
+            urlParams.set('page', first);
+            let newPageLink = window.location.pathname + "?" + urlParams.toString();
+            history.pushState(null, "", newPageLink);
+        }
         console.log('TOTAL:::: ', totalPages);
         let TitleAll = '';
-        renderPagination(totalPages);
+        renderPagination(totalPages,first);
         // let overCategoryName='';
         /// for render pagination()
         // renderPagination(totalPages);
@@ -187,9 +192,9 @@ function getArticles(first) {
 
         articlesMain.innerHTML = html;
     })
-        .catch(function (err) {
-            window.location.href('index.html');
-        });
+    .catch(function (err) {
+        window.location.href('index.html');
+    });
 }
 
 function mergeAndPush(first) {
