@@ -101,7 +101,10 @@ class Header extends HTMLElement {
                                                 <strong>$0.00</strong>
                                             </li>
                                             <li class="header-sine-in">
-                                                <a href="contact.html"><i class="flaticon-user"></i>Sign In</a>
+                                                <a href="login.html"><i class="flaticon-user"></i>Đăng nhập</a>
+                                            </li>
+                                            <li class="header-sine-in">
+                                                <a href="contact.html"><i class="flaticon-user"></i>Đăng kí</a>
                                             </li>
                                         </ul>
                                     </div>

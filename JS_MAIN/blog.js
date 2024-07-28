@@ -10,11 +10,33 @@ let FullRecentPosts = document.getElementById('FullRecentPosts');
 let RecentTitle = document.getElementById('RecentTitle');
 let RecentWrapper = document.getElementById('RecentWrapper');
 
-
+/// thầy xem giúp em với thầy
+// ủa anh thấy page 1 mà em
+/// thầy đợi e chút thầy
+/// e xem còn bug nào ko fix luôn thầy
+/// e load lại lại = 3 thầy
+// là đang bị gì em
+/// thầy check giúp e với ạ
+// anh chưa hiểu đang bị gì
+// có thấy lỗi gì đâu
+// show lỗi đi em
+// url có tham số page=3 đại diện cho đang ở trang số 3, thì em load lại nó ở tragn số 3 là đúng rồi em, chứ có gì sai đâu, giờ chuenr qua trang 4 đi load lại nó cũng sẽ là 4 thôi, thử vào các trang báo xem
+/// chắc phải reset về 1 hả thầy
+// sao menu chỗ category k gán link gì hết vậy em
+/// e quên thầy ạ, thầy đợi e chút ạ
+/// bắt sk vào <a> với <li> nó khác như thế nào ấy thầy
+// anh dã ví dụ dĩa cơm với miếng thịt heo rổi mà
+// sao giờ hỏi lại này 
+// sửa nhiêu đó thôi, anh nhắc nhiều lần bắt sự kiện vào thẻ a rồi, bên dưới em vẫn bắt class page-item là thẻ li
+/// em cảm ơn thầy ạ
+///////////////////////// =)
+/// e làm được rồi thầy ơiii
 let first = parseInt(urlParams.get('page'));
+console.log('first page::::',first);    
 if (isNaN(first) === true) {
     first = 1;
 }
+first=1;
 if (isNaN(parseInt(id))) {
     window.location.href = "index.html";
 }
@@ -77,63 +99,47 @@ API.call().get('articles/popular?limit=3').then(function (res) {
     FullRecentPosts.innerHTML = html;
 });
 
-API.call().get('categories_news').then(function (res) {
-    console.log('FOR NOW: ', res);
-    const articles = res.data.data;
-    console.log(articles);
-    let html = '';
-    let html2 = `<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
-                    <ul class="sub-menu">`;
-    articles.forEach((item, index) => {
-        if (index < 3) {
-            html +=
-                /* html */
-                `<li><a href="#">${item.name}</a></li>`;
-        }
-        else {
-            /* html */
-            html2 += `<li><a href="#">${item.name}</a></li>`
-        }
-    });
-    html2 += `</ul>
-        </li>`;
-    menuFull.innerHTML = html + html2;
-});
+// sao lại render lại menu ở đây nè, nó ghi đè code trong file menu.js rồi
+/// e quên để lại thầy ạ
+
+
 
 myPagination.addEventListener('click', function (e) {
     const el = e.target;
-    if (el.classList.contains('page-item')) {
+    if (el.classList.contains('page-link')) {
         first = parseInt(el.innerText);
         console.log('NEWWWW:::::::::::', first);
         getArticles(first);
     }
-    if (el.classList.contains('page-item-prev') === true) {
-        getArticles(first);
+    if (el.classList.contains('page-link-prev') === true) {
         first--;
         console.log('prevvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv:', first);
-        // getArticles(first);
+        getArticles(first);
     }
-    if (el.classList.contains('page-item-next') === true) {
-        getArticles(first);s
+    if (el.classList.contains('page-link-next') === true) {
+        // getArticles(first);
         first++;
+        getArticles(first);
         console.log('nexxxxxxxxxxxxxxxxxxxx', first);
         
     }
 });
 
 function renderPagination(total,first) {
-    const disPrev = (first === 1 ? 'pointer-events-none' : '');
-    const disNex = (first === total ? 'pointer-events-none' : '');
+    const disPrev = (first === 0 ? 'pointer-events-none' : '');
+    if (first===0) first++;
+    const disNex = (first === total+1 ? 'pointer-events-none' : '');
+    if (first===total+1) first--;
     myPagination.innerHTML = '';
-    let html = `<a class="page-item-prev page-link ${disPrev}">Previous</a>`;
+    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
         let active = (index === first ? 'active pointer-events-none' : '');
         // if (index === first) {
         //     mergeAndPush(first); /// tao trang moi
         // }
-        html += `<a class="page-item page-link ${active}">${index}</a>`;
+        html += `<li class="page-item ${active}"><a class="page-link" href="#">${index}</a></li>`;
     }
-    html += `<a class="page-item-next page-link ${disNex}">Next</a>`;
+    html += `<li class="page-item ${disNex}"><a class="page-link-next" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
 
@@ -144,7 +150,8 @@ function getArticles(first) {
         const articles = res.data.data;
         let html = '';
         let totalPages = res.data.meta.total;
-        if (first >= 1 && first <= totalPages) {
+        if (first >= 1 && first <= totalPages) { 
+            console.log(first);   
             urlParams.set('page', first);
             let newPageLink = window.location.pathname + "?" + urlParams.toString();
             history.pushState(null, "", newPageLink);
