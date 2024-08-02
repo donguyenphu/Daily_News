@@ -17,10 +17,24 @@ const API = {
     }, 
 };
 
+const inpSearch=document.getElementById('inpSearch');
 const ACCESS_TOKEN='ACCESS_TOKEN';
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
 
+inpSearch.addEventListener('keyup', function(res) {
+    if (res.key == 'Enter') {
+        let word=inpSearch.value.trim();
+        if (word.length === 0) {
+            alert('Khong hop le!');
+            inpSearch.value='';
+        }
+        else {
+            inpSearch.value='';
+            window.location.href=`search.html?keyword=${word}`;
+        }
+    }
+});
 
 function showErrorMessages(errors,el) {
     let errString='';
@@ -117,6 +131,59 @@ function Newsletter(WrapperNewsletter) {
             </div>
         </div>
     `;
+}
+function RecentPostsRender(RecentTitle,RecentPostWrapper) {
+    RecentTitle.innerHTML=
+    `
+        <h6 class="title">Tin gần đây</h6>
+        <div class="section-title-line"></div>
+    `;
+    API.call().get('articles/popular?limit=4').then(function(res) {
+        const articles=res.data.data;
+        let html='';
+        articles.forEach((item,index) => {
+            if (index === 0) {
+                html +=
+                    /* html */
+                    `   
+                <div class="hot-post-item">
+                    <div class="hot-post-thumb">
+                        <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt=""></a>
+                    </div>
+                    <div class="hot-post-content">
+                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
+                        <div class="blog-post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                                <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+            else {
+                html +=
+                    /* html */
+                    `
+                <div class="hot-post-item">
+                    <div class="hot-post-content">
+                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
+                        <div class="blog-post-meta">
+                            <ul class="list-wrap">
+                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                                <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        });
+        RecentPostWrapper.innerHTML=html;
+    });
 }
 
 /// <input type="text" placeholder="Enter your e-mail">

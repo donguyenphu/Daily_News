@@ -6,10 +6,9 @@ let id = urlParams.get('id');
 let articlesMain = document.getElementById('articlesMain');
 let myPagination = document.getElementById('myPagination');
 let overCategoryName = document.getElementById('overCategoryName');
-let FullRecentPosts = document.getElementById('FullRecentPosts');
 let RecentTitle = document.getElementById('RecentTitle');
-let RecentWrapper = document.getElementById('RecentWrapper');
-
+let RecentPostWrapper = document.getElementById('RecentPostWrapper');
+const WrapperNewsletter=document.getElementById('WrapperNewsletter');
 /// thầy xem giúp em với thầy
 // ủa anh thấy page 1 mà em
 /// thầy đợi e chút thầy
@@ -45,60 +44,8 @@ console.log('PAGESSSSSSSS:', first, 'AND:', id);
 
 
 getArticles(first);
-
-let html =
-    `
-    <div class="widget-title mb-30" id="RecentTitle">
-        <h6 class="title">Tin gần đây</h6>
-        <div class="section-title-line"></div>
-    </div>
-`;
-API.call().get('articles/popular?limit=3').then(function (res) {
-    const articles = res.data.data;
-    articles.forEach((item, index) => {
-        if (index === 0) {
-            html +=
-                /* html */
-                `   
-            <div class="hot-post-item">
-                <div class="hot-post-thumb">
-                    <a href="detail.html"><img src="${item.thumb}" alt=""></a>
-                </div>
-                <div class="hot-post-content">
-                    <a href="blog.html" class="post-tag">${item.category.name}</a>
-                    <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
-                    <div class="blog-post-meta">
-                        <ul class="list-wrap">
-                            <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                            <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            `;
-        }
-        else {
-            html +=
-                /* html */
-                `
-            <div class="hot-post-item">
-                <div class="hot-post-content">
-                    <a href="blog.html" class="post-tag">${item.category.name}</a>
-                    <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
-                    <div class="blog-post-meta">
-                        <ul class="list-wrap">
-                            <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                            <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            `;
-        }
-    });
-    FullRecentPosts.innerHTML = html;
-});
-
+RecentPostsRender(RecentTitle,RecentPostWrapper);
+Newsletter(WrapperNewsletter);
 // sao lại render lại menu ở đây nè, nó ghi đè code trong file menu.js rồi
 /// e quên để lại thầy ạ
 
@@ -144,8 +91,6 @@ function renderPagination(total,first) {
 }
 
 function getArticles(first) {
-   
-
     API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res => {
         const articles = res.data.data;
         let html = '';
@@ -168,11 +113,11 @@ function getArticles(first) {
                 `
                 <div class="weekly-post-item weekly-post-four">
                     <div class="weekly-post-thumb">
-                        <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                        <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="weekly-post-content">
                         <a href="blog.html" class="post-tag">${item.category.name}</a>
-                        <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
@@ -181,7 +126,7 @@ function getArticles(first) {
                         </div>
                         <p>${item.description}</p>
                         <div class="view-all-btn">
-                            <a href="detail.html" class="link-btn">Read More
+                            <a href="detail.html?id=${item.id}" class="link-btn">Read More
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                         <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />

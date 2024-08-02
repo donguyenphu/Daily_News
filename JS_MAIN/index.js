@@ -60,7 +60,6 @@ API.call().get('articles/popular?limit=4').then(function(res) {
 
     articles.forEach((item,index) => {
         let thumb=item.thumb;
-        console.log('IMAGES: ',thumb);
         let title=item.title;
         let name=item.category.name;
         let date=item.publish_date;
@@ -71,11 +70,11 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `
                 <div class="banner-post-two big-post">
                     <div class="banner-post-thumb-two">
-                        <a href="detail.html"><img src="${thumb}" alt="${item.title}"></a>
+                        <a href="detail.html?id=${item.id}"><img src="${thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="banner-post-content-two">
                         <a href="blog.html" class="post-tag">${name}</a>
-                        <h2 class="post-title bold-underline"><a href="detail.html">${title}</a></h2>
+                        <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-user"></i>by<a href="author.html">${author}</a></li>
@@ -93,11 +92,11 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `
                 <div class="banner-post-two small-post">
                     <div class="banner-post-thumb-two">
-                        <a href="detail.html"><img src="${thumb}" alt=""></a>
+                        <a href="detail.html?id=${item.id}"><img src="${thumb}" alt=""></a>
                     </div>
                     <div class="banner-post-content-two">
                         <a href="blog.html" class="post-tag">${name}</a>
-                        <h2 class="post-title"><a href="detail.html">${title}</a></h2>
+                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-calendar"></i>${date}</li>
@@ -109,14 +108,10 @@ API.call().get('articles/popular?limit=4').then(function(res) {
         }
     });
     bigPost.innerHTML=htmlMain;
-    // console.log(htmlMain);
     smallPost.innerHTML=htmlMinor;
-    // allTrendingPost.innerHTMLhtmlMain+htmlMinor;
 });
 
 let length=adImage.length;
-
-/// ADVERT FOR FUN
 
 API.call().get(`articles/popular?limit=${length}`).then(function(res) {
     let articles=res.data.data;
@@ -288,7 +283,7 @@ API.call().get('articles/popular?limit=4').then(function(res) {
     WeeklyBestNews.innerHTML='<h2 class="title"Tin tốt mỗi tuần</h2>';
     let html='';
     let articles=res.data.data;
-    console.log('FullWeeklyBestNews: ',articles);
+  
     articles.forEach((item) => {
         html+=
         `
@@ -423,7 +418,6 @@ API.call().get('articles/popular?limit=10').then(function(res) {
             </div>
         `;
     });
-    console.log('GGGGGGGGGGGGG: ',html);
     fullScrollRightPosts.innerHTML=html;
 });
 
