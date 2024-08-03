@@ -9,7 +9,7 @@ function preloader() {
 };
 
 $(window).on('load', function () {
-	preloader();
+	// preloader();
 	wowAnimation();
 });
 
@@ -255,51 +255,51 @@ $('.featured-post-active').slick({
 /*=============================================
 	=    		Editor Active		      =
 =============================================*/
-$('.editor-post-active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: false,
-    arrows: true,
-    prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-arrow-left"></i></button>',
-    nextArrow: '<button type="button" class="slick-next"><i class="fas fa-arrow-right"></i></button>',
-    appendArrows: ".editor-nav",
-	slidesToShow: 3,
-	slidesToScroll: 1,
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-	]
-});
+// $('.editor-post-active').slick({
+// 	dots: false,
+// 	infinite: true,
+// 	speed: 1000,
+// 	autoplay: false,
+//     arrows: true,
+//     prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-arrow-left"></i></button>',
+//     nextArrow: '<button type="button" class="slick-next"><i class="fas fa-arrow-right"></i></button>',
+//     appendArrows: ".editor-nav",
+// 	slidesToShow: 3,
+// 	slidesToScroll: 1,
+// 	responsive: [
+// 		{
+// 			breakpoint: 1200,
+// 			settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 1,
+// 				infinite: true,
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 992,
+// 			settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 1
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 767,
+// 			settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 1,
+// 				arrows: false,
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 575,
+// 			settings: {
+// 				slidesToShow: 1,
+// 				slidesToScroll: 1,
+// 				arrows: false,
+// 			}
+// 		},
+// 	]
+// });
 
 /*=============================================
 	=    		Editor Active		      =
@@ -352,48 +352,48 @@ $('.editor-post-active-two').slick({
 /*=============================================
 	=    		overlay post Active		      =
 =============================================*/
-$('.overlay-post-active').slick({
-	dots: false,
-	infinite: true,
-	speed: 1000,
-	autoplay: true,
-    arrows: false,
-	slidesToShow: 4,
-	slidesToScroll: 1,
-	responsive: [
-		{
-			breakpoint: 1200,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				infinite: true,
-			}
-		},
-		{
-			breakpoint: 992,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			}
-		},
-		{
-			breakpoint: 767,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-		{
-			breakpoint: 575,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-			}
-		},
-	]
-});
+// $('.overlay-post-active').slick({
+// 	dots: false,
+// 	infinite: true,
+// 	speed: 1000,
+// 	autoplay: true,
+//     arrows: false,
+// 	slidesToShow: 4,
+// 	slidesToScroll: 1,
+// 	responsive: [
+// 		{
+// 			breakpoint: 1200,
+// 			settings: {
+// 				slidesToShow: 3,
+// 				slidesToScroll: 1,
+// 				infinite: true,
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 992,
+// 			settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 1
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 767,
+// 			settings: {
+// 				slidesToShow: 2,
+// 				slidesToScroll: 1,
+// 				arrows: false,
+// 			}
+// 		},
+// 		{
+// 			breakpoint: 575,
+// 			settings: {
+// 				slidesToShow: 1,
+// 				slidesToScroll: 1,
+// 				arrows: false,
+// 			}
+// 		},
+// 	]
+// });
 
 
 /*=============================================

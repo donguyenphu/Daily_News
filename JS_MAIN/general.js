@@ -186,5 +186,9 @@ function RecentPostsRender(RecentTitle,RecentPostWrapper) {
     });
 }
 
+function preloader() {
+	$('#preloader').delay(1000).fadeOut();
+};
+
 /// <input type="text" placeholder="Enter your e-mail">
 

@@ -1,73 +1,73 @@
 console.log(123);
 
 
-const bigPost=document.getElementById('bigPost');
-const smallPost=document.getElementById('smallPost');
-const allTrendingPost=document.getElementById('allTrendingPost');
-const adImage=document.getElementsByClassName('adImage');
-const EditorChoice=document.getElementById('EditorChoice');
-const GraphEditorPosts=document.getElementById('GraphEditorPosts');
-const RecentPosts=document.getElementById('RecentPosts');
-const bigPostRecent=document.getElementById('bigPostRecent');
-const smallPostRecent=document.getElementById('smallPostRecent');
-const popularPostTitle=document.getElementById('popularPostTitle');
-const PopularFullPosts=document.getElementById('PopularFullPosts');
-const WeeklyBestNews=document.getElementById('WeeklyBestNews');
-const FullWeeklyBestNews=document.getElementById('FullWeeklyBestNews');
-const hotPosts=document.getElementById('getElementById');
-const fullHotPosts=document.getElementById('fullHotPosts');
-const AnotherPopular=document.getAnimations('AnotherPopular');
-const fullAnotherPopular=document.getElementById('fullAnotherPopular');
-const SubmitForm=document.getElementById('SubmitForm');
-const fullScrollRightPosts=document.getElementById('fullScrollRightPosts');
-const onlyImg02=document.getElementById('onlyImg02');
-const SubscribeFollowers=document.getElementById('SubscribeFollowers');
+const bigPost = document.getElementById('bigPost');
+const smallPost = document.getElementById('smallPost');
+const allTrendingPost = document.getElementById('allTrendingPost');
+const adImage = document.getElementById('adImage');
+const EditorChoice = document.getElementById('EditorChoice');
+const GraphEditorPosts = document.getElementById('GraphEditorPosts');
+const RecentPosts = document.getElementById('RecentPosts');
+const bigPostRecent = document.getElementById('bigPostRecent');
+const smallPostRecent = document.getElementById('smallPostRecent');
+const popularPostTitle = document.getElementById('popularPostTitle');
+const PopularFullPosts = document.getElementById('PopularFullPosts');
+const WeeklyBestNews = document.getElementById('WeeklyBestNews');
+const FullWeeklyBestNews = document.getElementById('FullWeeklyBestNews');
+const hotPosts = document.getElementById('getElementById');
+const fullHotPosts = document.getElementById('fullHotPosts');
+const AnotherPopular = document.getAnimations('AnotherPopular');
+const fullAnotherPopular = document.getElementById('fullAnotherPopular');
+const SubmitForm = document.getElementById('SubmitForm');
+const fullScrollRightPosts = document.getElementById('fullScrollRightPosts');
+const onlyImg02 = document.getElementById('onlyImg02');
+const SubscribeFollowers = document.getElementById('SubscribeFollowers');
 
 
-const baseURL='https://apiforlearning.zendvn.com/api/v2';
+const baseURL = 'https://apiforlearning.zendvn.com/api/v2';
 /// RENDER MENUS
 
-API.call().get('categories_news').then(function(res) {
-    console.log('FOR NOW: ',res);
-    const articles=res.data.data;
+API.call().get('categories_news').then(function (res) {
+    console.log('FOR NOW: ', res);
+    const articles = res.data.data;
     console.log(articles);
-    let html='';
-    let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
+    let html = '';
+    let html2 = `<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
                     <ul class="sub-menu">`;
-    articles.forEach((item,index) => {
-       if (index < 3) {
-            html+=
-            /* html */
-            `<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`;
+    articles.forEach((item, index) => {
+        if (index < 3) {
+            html +=
+                /* html */
+                `<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`;
         }
         else {
             /* html */
-            html2+=`<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`
+            html2 += `<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`
         }
     });
-    html2+=`</ul>
+    html2 += `</ul>
         </li>`;
-    menuFull.innerHTML=html+html2;
+    menuFull.innerHTML = html + html2;
 });
 
 /// ARTICLES TRENDING
 
-API.call().get('articles/popular?limit=4').then(function(res) {
-    const articles=res.data.data;
-    console.log('AAAAAAAAAAAAAAAA',articles);
-    let htmlMain='';
-    let htmlMinor='';
+API.call().get('articles/popular?limit=5').then(function (res) {
+    const articles = res.data.data;
+    console.log('AAAAAAAAAAAAAAAA', articles);
+    let htmlMain = '';
+    let htmlMinor = '';
 
-    articles.forEach((item,index) => {
-        let thumb=item.thumb;
-        let title=item.title;
-        let name=item.category.name;
-        let date=item.publish_date;
-        let author=item.author;
-        if (index==1) {
-            htmlMain+=
-            /* html */
-            `
+    articles.forEach((item, index) => {
+        let thumb = item.thumb;
+        let title = item.title;
+        let name = item.category.name;
+        let date = item.publish_date;
+        let author = item.author;
+        if (index === 0) {
+            htmlMain +=
+                /* html */
+                `
                 <div class="banner-post-two big-post">
                     <div class="banner-post-thumb-two">
                         <a href="detail.html?id=${item.id}"><img src="${thumb}" alt="${item.title}"></a>
@@ -85,11 +85,10 @@ API.call().get('articles/popular?limit=4').then(function(res) {
                     </div>
                 </div>
             `;
-        }
-        else {
-            htmlMinor+=
-            /* html */
-            `
+        } else if (index < 4) {
+            htmlMinor +=
+                /* html */
+                `
                 <div class="banner-post-two small-post">
                     <div class="banner-post-thumb-two">
                         <a href="detail.html?id=${item.id}"><img src="${thumb}" alt=""></a>
@@ -105,36 +104,25 @@ API.call().get('articles/popular?limit=4').then(function(res) {
                     </div>
                 </div>
             `;
+        } else {
+            adImage.src = item.thumb
         }
     });
-    bigPost.innerHTML=htmlMain;
-    smallPost.innerHTML=htmlMinor;
-});
-
-let length=adImage.length;
-
-API.call().get(`articles/popular?limit=${length}`).then(function(res) {
-    let articles=res.data.data;
-    articles.forEach((item,index) => {
-        adImage[index].innerHTML=
-            `<a href="#">
-                <img src="${item.thumb}" alt="${item.title}" class="w-100">
-            </a>`;
-    });
+    bigPost.innerHTML = htmlMain;
+    smallPost.innerHTML = htmlMinor;
 });
 
 
 //// EDITOR CHOICE
 
-API.call().get('articles/popular?limit=3').then(function(res) {
-    EditorChoice.innerHTML='<h2 class="title">Tin nhanh</h2>';
-    let articles=res.data.data;
-    console.log('Editor ARTICLES: ',articles);
-    let html='';
+API.call().get('articles/popular?limit=6').then(function (res) {
+    let articles = res.data.data;
+    console.log('Editor ARTICLES: ', articles);
+    let html = '';
     articles.forEach((item) => {
-        html+=
-        /* html */
-        `
+        html +=
+            /* html */
+            `
             <div class="col-lg-4">
                 <div class="editor-post-item">
                     <div class="editor-post-thumb">
@@ -153,19 +141,64 @@ API.call().get('articles/popular?limit=3').then(function(res) {
             </div>
         `;
     });
-    GraphEditorPosts.innerHTML=html;
+    GraphEditorPosts.innerHTML = html;
+    $('#GraphEditorPosts').slick({
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-arrow-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="fas fa-arrow-right"></i></button>',
+        appendArrows: ".editor-nav",
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+        ]
+    });
 });
 
 /// RECENT POSTS
-API.call().get('articles/popular?limit=4').then(function(res) {
-    RecentPosts.innerHTML='<h2 class="title">Bài viết gần đây</h2>';
-    let htmlBig='';
-    let htmlSmall='';
-    let articles=res.data.data;
-    articles.forEach((item,index) => {
+API.call().get('articles/popular?limit=4').then(function (res) {
+    RecentPosts.innerHTML = '<h2 class="title">Bài viết gần đây</h2>';
+    let htmlBig = '';
+    let htmlSmall = '';
+    let articles = res.data.data;
+    articles.forEach((item, index) => {
         if (!index) {
-            htmlBig+=
-            `
+            htmlBig +=
+                `
                 <div class="overlay-post-two">
                     <div class="overlay-post-thumb">
                         <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
@@ -185,8 +218,8 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `;
         }
         else {
-            htmlSmall+=
-            `
+            htmlSmall +=
+                `
                 <div class="horizontal-post-two">
                     <div class="horizontal-post-thumb">
                         <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
@@ -204,22 +237,22 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `;
         }
     });
-    bigPostRecent.innerHTML=htmlBig;
-    smallPostRecent.innerHTML=htmlSmall;
+    bigPostRecent.innerHTML = htmlBig;
+    smallPostRecent.innerHTML = htmlSmall;
 });
 
 //// POPULAR ARTICLES 
 
 
-API.call().get('articles/popular?limit=4').then(function(res) {
-    popularPostTitle.innerHTML='<h2 class="title">Bài viết phổ biến</h2>';
-    let htmlBig=htmlSmall='';
-    let html='';
-    let articles=res.data.data;
-    articles.forEach((item,index) => {
+API.call().get('articles/popular?limit=4').then(function (res) {
+    popularPostTitle.innerHTML = '<h2 class="title">Bài viết phổ biến</h2>';
+    let htmlBig = htmlSmall = '';
+    let html = '';
+    let articles = res.data.data;
+    articles.forEach((item, index) => {
         if (!index) {
-            html+=
-            `
+            html +=
+                `
                 <div class="col-lg-12">
                     <div class="trending-post">
                         <div class="trending-post-thumb">
@@ -252,8 +285,8 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `;
         }
         else {
-            html+=
-            `
+            html +=
+                `
                 <div class="col-lg-4 col-md-6">
                     <div class="trending-post-two">
                         <div class="trending-post-thumb-two">
@@ -274,19 +307,19 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             `;
         }
     });
-    PopularFullPosts.innerHTML=html;
+    PopularFullPosts.innerHTML = html;
 
 });
 
 /// WEEKLY BEST NEWS
-API.call().get('articles/popular?limit=4').then(function(res) {
-    WeeklyBestNews.innerHTML='<h2 class="title"Tin tốt mỗi tuần</h2>';
-    let html='';
-    let articles=res.data.data;
-  
+API.call().get('articles/popular?limit=4').then(function (res) {
+    WeeklyBestNews.innerHTML = '<h2 class="title"Tin tốt mỗi tuần</h2>';
+    let html = '';
+    let articles = res.data.data;
+
     articles.forEach((item) => {
-        html+=
-        `
+        html +=
+            `
             <div class="weekly-post-item weekly-post-two">
                 <div class="weekly-post-thumb">
                     <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
@@ -315,23 +348,23 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             </div>
         `;
     });
-    FullWeeklyBestNews.innerHTML=html;
-    console.log('FullWeeklyBestNews: ',html);
+    FullWeeklyBestNews.innerHTML = html;
+    console.log('FullWeeklyBestNews: ', html);
 });
 
 
 /// HOT POSTS 
 
-API.call().get('articles/popular?limit=4').then(function(res) {
-    let articles=res.data.data;
-    let html=`<div class="widget-title mb-30">
+API.call().get('articles/popular?limit=4').then(function (res) {
+    let articles = res.data.data;
+    let html = `<div class="widget-title mb-30">
                 <h6 class="title" id="hotPosts">Bài viết thu hút</h6>
                 <div class="section-title-line"></div>
             </div>`;
     articles.forEach((item) => {
-        html+=
-        /* html */
-        `
+        html +=
+            /* html */
+            `
             <div class="popular-post align-items-stretch">
                 <div class="thumb">
                     <a href="detail.html" class="h-100"><img src="${item.thumb}" alt="${item.title}" class="h-100 object-fit-cover"></a>
@@ -348,21 +381,21 @@ API.call().get('articles/popular?limit=4').then(function(res) {
             </div>
         `;
     });
-    console.log('fullHotPosts',html);
-    fullHotPosts.innerHTML=html;
+    console.log('fullHotPosts', html);
+    fullHotPosts.innerHTML = html;
 });
 
 /// ANOTHER POPULAR
 
-API.call().get('articles/popular?limit=4').then(function(res) {
-    let html=`<div class="widget-title mb-30">
+API.call().get('articles/popular?limit=4').then(function (res) {
+    let html = `<div class="widget-title mb-30">
                 <h6 class="title" id="AnotherPopular">Tin phổ biến</h6>
                 <div class="section-title-line"></div>
             </div>`;
-    let articles=res.data.data;
-    articles.forEach((item,index) => {
+    let articles = res.data.data;
+    articles.forEach((item, index) => {
         if (!index) {
-            html+=`<div class="sidebar-overlay-post">
+            html += `<div class="sidebar-overlay-post">
                         <div class="so-post-thumb">
                             <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
                         </div>
@@ -382,7 +415,7 @@ API.call().get('articles/popular?limit=4').then(function(res) {
 
         }
     });
-    fullAnotherPopular.innerHTML=html;
+    fullAnotherPopular.innerHTML = html;
 });
 
 /// SubmitFormProcess
@@ -392,12 +425,12 @@ SubFollow(SubscribeFollowers);
 
 // fullScrollRightPosts
 
-API.call().get('articles/popular?limit=10').then(function(res) {
-    let articles=res.data.data;
-    let html='';
+API.call().get('articles/popular?limit=10').then(function (res) {
+    let articles = res.data.data;
+    let html = '';
     articles.forEach((item) => {
-        html+=
-        `
+        html +=
+            `
             <div class="col-lg-3">
                 <div class="overlay-post-three">
                     <div class="overlay-post-thumb-three">
@@ -418,22 +451,64 @@ API.call().get('articles/popular?limit=10').then(function(res) {
             </div>
         `;
     });
-    fullScrollRightPosts.innerHTML=html;
+    fullScrollRightPosts.innerHTML = html;
+    $('#fullScrollRightPosts').slick({
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        autoplay: true,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+        ]
+    });
 });
 
 
-API.call().get('articles/popular?limit=1').then(function(res) {
-    const articles=res.data.data;
-    let html='';
+API.call().get('articles/popular?limit=1').then(function (res) {
+    const articles = res.data.data;
+    let html = '';
     articles.forEach((item) => {
-        html+=
-        `
+        html +=
+            `
             <a href="#">
                 <img src="${item.thumb}" alt="">
             </a>
         `;
     });
-    onlyImg02.innerHTML=html;
+    onlyImg02.innerHTML = html;
 });
 
 
@@ -445,9 +520,9 @@ API.call().get('articles/popular?limit=1').then(function(res) {
 
 /// SubscribeFollowers
 
-function SubFollow (SubscribeFollowers) {
-    SubscribeFollowers.innerHTML=
-    `   
+function SubFollow(SubscribeFollowers) {
+    SubscribeFollowers.innerHTML =
+        `   
         <div class="widget-title mb-30">
             <h6 class="title">Người truy cập</h6>
             <div class="section-title-line"></div>

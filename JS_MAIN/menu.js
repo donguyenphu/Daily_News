@@ -23,4 +23,5 @@ API.call().get('categories_news').then(function(res) {
         </li>`;
     menuFull.innerHTML=html+html2;
     /// sao nó ko mở đc hả thầy
+    preloader();
 });

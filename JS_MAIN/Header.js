@@ -123,7 +123,7 @@ class Header extends HTMLElement {
                                     </div>
                                     <div class="mobile-search">
                                         <form action="#">
-                                            <input type="text" placeholder="Search here...">
+                                            <input type="text" placeholder="Search here..." id="inpSearch">
                                             <button><i class="flaticon-search"></i></button>
                                         </form>
                                     </div>
