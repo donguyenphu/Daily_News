@@ -1,6 +1,3 @@
-console.log(123);
-
-
 const bigPost = document.getElementById('bigPost');
 const smallPost = document.getElementById('smallPost');
 const allTrendingPost = document.getElementById('allTrendingPost');
@@ -22,15 +19,14 @@ const SubmitForm = document.getElementById('SubmitForm');
 const fullScrollRightPosts = document.getElementById('fullScrollRightPosts');
 const onlyImg02 = document.getElementById('onlyImg02');
 const SubscribeFollowers = document.getElementById('SubscribeFollowers');
+const elCategoriesWithArticles = document.getElementById('categoriesWithArticles');
 
 
 const baseURL = 'https://apiforlearning.zendvn.com/api/v2';
 /// RENDER MENUS
 
 API.call().get('categories_news').then(function (res) {
-    console.log('FOR NOW: ', res);
     const articles = res.data.data;
-    console.log(articles);
     let html = '';
     let html2 = `<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
                     <ul class="sub-menu">`;
@@ -54,7 +50,6 @@ API.call().get('categories_news').then(function (res) {
 
 API.call().get('articles/popular?limit=5').then(function (res) {
     const articles = res.data.data;
-    console.log('AAAAAAAAAAAAAAAA', articles);
     let htmlMain = '';
     let htmlMinor = '';
 
@@ -117,7 +112,6 @@ API.call().get('articles/popular?limit=5').then(function (res) {
 
 API.call().get('articles/popular?limit=6').then(function (res) {
     let articles = res.data.data;
-    console.log('Editor ARTICLES: ', articles);
     let html = '';
     articles.forEach((item) => {
         html +=
@@ -190,126 +184,303 @@ API.call().get('articles/popular?limit=6').then(function (res) {
 });
 
 /// RECENT POSTS
-API.call().get('articles/popular?limit=4').then(function (res) {
-    RecentPosts.innerHTML = '<h2 class="title">Bài viết gần đây</h2>';
-    let htmlBig = '';
-    let htmlSmall = '';
-    let articles = res.data.data;
-    articles.forEach((item, index) => {
-        if (!index) {
-            htmlBig +=
-                `
-                <div class="overlay-post-two">
-                    <div class="overlay-post-thumb">
-                        <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
-                    </div>
-                    <div class="overlay-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
-                        <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
-                        <div class="blog-post-meta white-blog-meta">
-                            <ul class="list-wrap">
-                                <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
-                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                                <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        else {
-            htmlSmall +=
-                `
-                <div class="horizontal-post-two">
-                    <div class="horizontal-post-thumb">
-                        <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
-                    </div>
-                    <div class="horizontal-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
-                        <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
-                        <div class="blog-post-meta">
-                            <ul class="list-wrap">
-                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-    });
-    bigPostRecent.innerHTML = htmlBig;
-    smallPostRecent.innerHTML = htmlSmall;
-});
+// API.call().get('articles/popular?limit=4').then(function (res) {
+//     RecentPosts.innerHTML = '<h2 class="title">Bài viết gần đây</h2>';
+//     let htmlBig = '';
+//     let htmlSmall = '';
+//     let articles = res.data.data;
+//     articles.forEach((item, index) => {
+//         if (!index) {
+//             htmlBig +=
+//                 `
+//                 <div class="overlay-post-two">
+//                     <div class="overlay-post-thumb">
+//                         <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+//                     </div>
+//                     <div class="overlay-post-content">
+//                         <a href="blog.html" class="post-tag">${item.category.name}</a>
+//                         <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+//                         <div class="blog-post-meta white-blog-meta">
+//                             <ul class="list-wrap">
+//                                 <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
+//                                 <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+//                                 <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+//                             </ul>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+//         }
+//         else {
+//             htmlSmall +=
+//                 `
+//                 <div class="horizontal-post-two">
+//                     <div class="horizontal-post-thumb">
+//                         <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+//                     </div>
+//                     <div class="horizontal-post-content">
+//                         <a href="blog.html" class="post-tag">${item.category.name}</a>
+//                         <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+//                         <div class="blog-post-meta">
+//                             <ul class="list-wrap">
+//                                 <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+//                             </ul>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+//         }
+//     });
+//     bigPostRecent.innerHTML = htmlBig;
+//     smallPostRecent.innerHTML = htmlSmall;
+// });
 
 //// POPULAR ARTICLES 
 
 
-API.call().get('articles/popular?limit=4').then(function (res) {
-    popularPostTitle.innerHTML = '<h2 class="title">Bài viết phổ biến</h2>';
-    let htmlBig = htmlSmall = '';
+// API.call().get('articles/popular?limit=4').then(function (res) {
+//     popularPostTitle.innerHTML = '<h2 class="title">Bài viết phổ biến</h2>';
+//     let htmlBig = htmlSmall = '';
+//     let html = '';
+//     let articles = res.data.data;
+//     articles.forEach((item, index) => {
+//         if (!index) {
+//             html +=
+//                 `
+//                 <div class="col-lg-12">
+//                     <div class="trending-post">
+//                         <div class="trending-post-thumb">
+//                             <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+//                         </div>
+//                         <div class="trending-post-content">
+//                             <a href="blog.html" class="post-tag">${item.category.name}</a>
+//                             <h2 class="post-title bold-underline"><a href="detail.html">${item.title}</a></h2>
+//                             <div class="blog-post-meta">
+//                                 <ul class="list-wrap">
+//                                     <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
+//                                     <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+//                                     <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+//                                 </ul>
+//                             </div>
+//                             <p>${item.description}</p>
+//                             <div class="view-all-btn">
+//                                 <a href="detail.html" class="link-btn">Read More
+//                                     <span class="svg-icon">
+//                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+//                                             <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
+//                                             <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+//         }
+//         else {
+//             html +=
+//                 `
+//                 <div class="col-lg-4 col-md-6">
+//                     <div class="trending-post-two">
+//                         <div class="trending-post-thumb-two">
+//                             <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+//                             <a href="blog.html" class="post-tag">${item.category.name}</a>
+//                         </div>
+//                         <div class="trending-post-content-two">
+//                             <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+//                             <div class="blog-post-meta">
+//                                 <ul class="list-wrap">
+//                                     <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
+//                                     <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+//                                 </ul>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+//         }
+//     });
+//     PopularFullPosts.innerHTML = html;
+
+// });
+
+function renderCWATitle(item) {
+    return `
+    <div class="section-title-wrap mb-30">
+        <div class="section-title" id="popularPostTitle">
+            <h2 class="title">${item.name}</h2>
+        </div>
+        <div class="view-all-btn">
+            <a href="blog.html" class="link-btn">View All
+                <span class="svg-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+                        <path
+                            d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z"
+                            fill="currentColor" />
+                        <path
+                            d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z"
+                            fill="currentColor" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+        <div class="section-title-line"></div>
+    </div>`
+}
+
+function renderCWALargePostEven(item) {
+    // const thumb = item.thumb;
+    // const id = item.id;
+    // const title = item.title;
+    const {id, thumb, title} = item;
+
+    return `
+    <div class="col-54" id="bigPostRecent">
+        <div class="overlay-post-two">
+            <div class="overlay-post-thumb">
+                <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+            </div>
+            <div class="overlay-post-content">
+                <a href="blog.html" class="post-tag">News</a>
+                <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
+                <div class="blog-post-meta white-blog-meta">
+                    <ul class="list-wrap">
+                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
+                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
+                        <li><i class="flaticon-history"></i>20 Mins</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>`
+}
+
+function renderCWASmallPostsEven(items) {
     let html = '';
-    let articles = res.data.data;
-    articles.forEach((item, index) => {
-        if (!index) {
-            html +=
-                `
-                <div class="col-lg-12">
-                    <div class="trending-post">
-                        <div class="trending-post-thumb">
-                            <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
-                        </div>
-                        <div class="trending-post-content">
-                            <a href="blog.html" class="post-tag">${item.category.name}</a>
-                            <h2 class="post-title bold-underline"><a href="detail.html">${item.title}</a></h2>
-                            <div class="blog-post-meta">
-                                <ul class="list-wrap">
-                                    <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
-                                    <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                                    <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
-                                </ul>
-                            </div>
-                            <p>${item.description}</p>
-                            <div class="view-all-btn">
-                                <a href="detail.html" class="link-btn">Read More
-                                    <span class="svg-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
-                                            <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
-                                            <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+    items.forEach(item => {
+        const {id, thumb, title} = item;
+        html += /*html */`
+        <div class="horizontal-post-two">
+            <div class="horizontal-post-thumb">
+                <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+            </div>
+            <div class="horizontal-post-content">
+                <a href="blog.html" class="post-tag">Gadget</a>
+                <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
+                <div class="blog-post-meta">
+                    <ul class="list-wrap">
+                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
+                    </ul>
+                </div>
+            </div>
+        </div>`;
+    });
+    return html;
+}
+
+function renderCWALargePostOdd(item) {
+    const {description, id, thumb, title} = item;
+    return /*html */`
+    <div class="col-lg-12">
+        <div class="trending-post">
+            <div class="trending-post-thumb">
+                <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+            </div>
+            <div class="trending-post-content">
+                <a href="blog.html" class="post-tag">Technology</a>
+                <h2 class="post-title bold-underline"><a href="detail.html">${title}</a></h2>
+                <div class="blog-post-meta">
+                    <ul class="list-wrap">
+                        <li><i class="flaticon-user"></i>by<a
+                                href="author.html">Admin</a></li>
+                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
+                        <li><i class="flaticon-history"></i>20 Mins</li>
+                    </ul>
+                </div>
+                <p>${description}</p>
+                <div class="view-all-btn">
+                    <a href="detail.html?id=${id}" class="link-btn">Read More
+                        <span class="svg-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"
+                                fill="none">
+                                <path
+                                    d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z"
+                                    fill="currentColor" />
+                                <path
+                                    d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>`
+}
+
+function renderCWASmallPostsOdd(items) {
+    let html = '';
+    items.forEach(item => {
+        const {id, thumb, title} = item;
+        html += /*html */`
+        <div class="col-lg-4 col-md-6">
+            <div class="trending-post-two">
+                <div class="trending-post-thumb-two">
+                    <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+                    <a href="blog.html" class="post-tag">Gadget</a>
+                </div>
+                <div class="trending-post-content-two">
+                    <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
+                    <div class="blog-post-meta">
+                        <ul class="list-wrap">
+                            <li><i class="flaticon-user"></i>by<a
+                                    href="author.html">Admin</a></li>
+                            <li><i class="flaticon-calendar"></i>27 August, 2024</li>
+                        </ul>
                     </div>
                 </div>
-            `;
-        }
-        else {
-            html +=
-                `
-                <div class="col-lg-4 col-md-6">
-                    <div class="trending-post-two">
-                        <div class="trending-post-thumb-two">
-                            <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
-                            <a href="blog.html" class="post-tag">${item.category.name}</a>
-                        </div>
-                        <div class="trending-post-content-two">
-                            <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
-                            <div class="blog-post-meta">
-                                <ul class="list-wrap">
-                                    <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
-                                    <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                                </ul>
-                            </div>
-                        </div>
+            </div>
+        </div>`
+    });
+    return html;
+}
+
+
+API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
+    const data = res.data.data;
+    let html = '';
+    console.log(data);
+    
+    data.forEach((item, idx) => {
+        const articles = item.articles; // 4
+        const largePost = articles.shift(); // 1
+        const smallPosts = articles; // 3
+
+        if (idx % 2 === 0) {
+            html += `
+            <div class="recent-post-wrap">
+                ${renderCWATitle(item)}
+                <div class="row">
+                    ${renderCWALargePostEven(largePost)}
+                    <div class="col-46" id="smallPostRecent">
+                        ${renderCWASmallPostsEven(smallPosts)}
                     </div>
                 </div>
-            `;
+            </div>`
+        } else {
+            html += `
+            <div class="trending-post-wrap">
+                ${renderCWATitle(item)}
+                <div class="row justify-content-center" id="PopularFullPosts">
+                    ${renderCWALargePostOdd(largePost)}
+                    ${renderCWASmallPostsOdd(smallPosts)}
+                </div>
+            </div>`
         }
     });
-    PopularFullPosts.innerHTML = html;
-
-});
+    elCategoriesWithArticles.innerHTML = html;
+})
 
 /// WEEKLY BEST NEWS
 API.call().get('articles/popular?limit=4').then(function (res) {
@@ -349,13 +520,12 @@ API.call().get('articles/popular?limit=4').then(function (res) {
         `;
     });
     FullWeeklyBestNews.innerHTML = html;
-    console.log('FullWeeklyBestNews: ', html);
 });
 
 
 /// HOT POSTS 
 
-API.call().get('articles/popular?limit=4').then(function (res) {
+API.call().get('articles/popular?limit=5').then(function (res) {
     let articles = res.data.data;
     let html = `<div class="widget-title mb-30">
                 <h6 class="title" id="hotPosts">Bài viết thu hút</h6>
@@ -381,7 +551,6 @@ API.call().get('articles/popular?limit=4').then(function (res) {
             </div>
         `;
     });
-    console.log('fullHotPosts', html);
     fullHotPosts.innerHTML = html;
 });
 

@@ -2,9 +2,7 @@
 const menuFull=document.getElementById('menuFull');
 
 API.call().get('categories_news').then(function(res) {
-    console.log('FOR NOW: ',res);
     const articles=res.data.data;
-    console.log(articles);
     let html='';
     let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
                     <ul class="sub-menu">`;
