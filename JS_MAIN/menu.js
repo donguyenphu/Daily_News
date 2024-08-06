@@ -10,11 +10,11 @@ API.call().get('categories_news').then(function(res) {
        if (index < 3) {
             html+=
             /* html */
-            `<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`;
+            `<li><a href="category.html?id=${item.id}">${item.name}</a></li>`;
         }
         else {
             /* html */
-            html2+=`<li><a href="blog.html?id=${item.id}">${item.name}</a></li>`
+            html2+=`<li><a href="category.html?id=${item.id}">${item.name}</a></li>`
         }
     });
     html2+=`</ul>

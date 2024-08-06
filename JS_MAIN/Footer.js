@@ -29,10 +29,10 @@ class Footer extends HTMLElement {
                                     <div class="footer-link-wrap">
                                         <ul class="list-wrap">
                                             <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">The Test Kitchen</a></li>
-                                            <li><a href="contact.html">Podcast</a></li>
-                                            <li><a href="contact.html">Events</a></li>
-                                            <li><a href="contact.html">Jobs</a></li>
+                                            <li><a href="register.html">The Test Kitchen</a></li>
+                                            <li><a href="register.html">Podcast</a></li>
+                                            <li><a href="register.html">Events</a></li>
+                                            <li><a href="register.html">Jobs</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,11 +42,11 @@ class Footer extends HTMLElement {
                                     <h4 class="fw-title">Get Help</h4>
                                     <div class="footer-link-wrap">
                                         <ul class="list-wrap">
-                                            <li><a href="contact.html">Contact & Faq</a></li>
-                                            <li><a href="contact.html">Oders & Returns</a></li>
-                                            <li><a href="contact.html">Gift Cards</a></li>
-                                            <li><a href="contact.html">Register</a></li>
-                                            <li><a href="contact.html">Catalog</a></li>
+                                            <li><a href="register.html">Contact & Faq</a></li>
+                                            <li><a href="register.html">Oders & Returns</a></li>
+                                            <li><a href="register.html">Gift Cards</a></li>
+                                            <li><a href="register.html">Register</a></li>
+                                            <li><a href="register.html">Catalog</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -56,11 +56,11 @@ class Footer extends HTMLElement {
                                     <h4 class="fw-title">Explore</h4>
                                     <div class="footer-link-wrap">
                                         <ul class="list-wrap">
-                                            <li><a href="contact.html">The Shop</a></li>
-                                            <li><a href="contact.html">Recipes</a></li>
-                                            <li><a href="contact.html">Food</a></li>
-                                            <li><a href="contact.html">Travel</a></li>
-                                            <li><a href="contact.html">Hotline</a></li>
+                                            <li><a href="register.html">The Shop</a></li>
+                                            <li><a href="register.html">Recipes</a></li>
+                                            <li><a href="register.html">Food</a></li>
+                                            <li><a href="register.html">Travel</a></li>
+                                            <li><a href="register.html">Hotline</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@ class Footer extends HTMLElement {
             <div class="col-md-6">
                 <div class="footer-bottom-menu">
                     <ul class="list-wrap">
-                        <li><a href="contact.html">Chính sách và điều khoản</a></li>
+                        <li><a href="register.html">Chính sách và điều khoản</a></li>
                     </ul>
                 </div>
             </div>

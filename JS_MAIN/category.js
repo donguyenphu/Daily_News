@@ -45,7 +45,27 @@ console.log('PAGESSSSSSSS:', first, 'AND:', id);
 
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
-Newsletter(WrapperNewsletter);
+WrapperNewsletter.innerHTML=
+`
+    <div class="sidebar-newsletter" id="WrapperNewsletter">
+        <div class="icon"><i class="flaticon-envelope"></i></div>
+        <h4 class="title">TRANG TIN TỨC HIỆN ĐẠI</h4>
+        <p>Đăng kí để nhận thông báo mới nhất</p>
+        <div class="sidebar-newsletter-form-two">
+            <form action="#">
+                <div class="form-grp">
+                    <button type="submit" class="btn" href="login.html">Đăng nhập ngay</button>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="checkbox">
+                    <label for="checkbox">Lưu thông tin cá nhân</label>
+                </div>
+            </form>
+        </div>
+    </div>
+`;
+console.log('WrapperNewsletter.INNERHTML',WrapperNewsletter.innerHTML);
+
 // sao lại render lại menu ở đây nè, nó ghi đè code trong file menu.js rồi
 /// e quên để lại thầy ạ
 
@@ -116,7 +136,7 @@ function getArticles(first) {
                         <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="weekly-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">

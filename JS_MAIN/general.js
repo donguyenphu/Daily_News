@@ -76,7 +76,7 @@ function getRecentPosts(FullRecentPosts,RecentTitle,RecentWrapper) {
                         <a href="detail.html"><img src="assets/img/blog/blog_rc_post.jpg" alt=""></a>
                     </div>
                     <div class="hot-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -94,7 +94,7 @@ function getRecentPosts(FullRecentPosts,RecentTitle,RecentWrapper) {
                 `
                 <div class="hot-post-item">
                     <div class="hot-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -111,11 +111,11 @@ function getRecentPosts(FullRecentPosts,RecentTitle,RecentWrapper) {
     RecentWrapper.innerHTML=html;
 }
 function Newsletter(WrapperNewsletter) {
-    WrapperNewsletter.innerHTML=
+    return
     `
         <div class="sidebar-newsletter" id="WrapperNewsletter">
             <div class="icon"><i class="flaticon-envelope"></i></div>
-            <h4 class="title">TRANG TIN TỨC HIỆN ĐẠI    </h4>
+            <h4 class="title">TRANG TIN TỨC HIỆN ĐẠI</h4>
             <p>Đăng kí để nhận thông báo mới nhất</p>
             <div class="sidebar-newsletter-form-two">
                 <form action="#">
@@ -151,7 +151,7 @@ function RecentPostsRender(RecentTitle,RecentPostWrapper) {
                         <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt=""></a>
                     </div>
                     <div class="hot-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -169,7 +169,7 @@ function RecentPostsRender(RecentTitle,RecentPostWrapper) {
                     `
                 <div class="hot-post-item">
                     <div class="hot-post-content">
-                        <a href="blog.html" class="post-tag">${item.category.name}</a>
+                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">

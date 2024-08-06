@@ -83,28 +83,21 @@ class Header extends HTMLElement {
                                             </li>
                                             <li class="menu-item-has-children"><a href="#">Categories</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="blog.html">Blog Default</a></li>
+                                                    <li><a href="category.html">Blog Default</a></li>
                                                     <li><a href="blog-2.html">Blog Layout 02</a></li>
                                                     <li><a href="blog-3.html">Blog Layout 03</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Login</a></li>
+                                            <li><a href="login.html">Login</a></li>
                                         </ul>
                                     </div>
                                     <div class="header-action d-none d-md-block">
                                         <ul class="list-wrap">
-                                            <li class="header-wishlist">
-                                                <a href="#"><i class="flaticon-heart"></i><span>0</span></a>
-                                            </li>
-                                            <li class="header-cart">
-                                                <a href="#"><i class="flaticon-basket"></i><span>0</span></a>
-                                                <strong>$0.00</strong>
-                                            </li>
                                             <li class="header-sine-in">
                                                 <a href="login.html"><i class="flaticon-user"></i>Đăng nhập</a>
                                             </li>
                                             <li class="header-sine-in">
-                                                <a href="contact.html"><i class="flaticon-user"></i>Đăng kí</a>
+                                                <a href="register.html"><i class="flaticon-user"></i>Đăng kí</a>
                                             </li>
                                         </ul>
                                     </div>

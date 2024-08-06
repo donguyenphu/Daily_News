@@ -8,9 +8,6 @@ RecentPostsRender(RecentTitle,RecentPostWrapper);
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let id = parseInt(urlParams.get('id'));
-
-console.log('ID:::',id);
-
 // API.callWithToken().get('/auth/me').then((res) => {
 
 // }).catch(err => {
@@ -22,7 +19,6 @@ let html2='';
 let html3='';
 API.call().get('articles/popular?limit=1').then(function(res2) {
     let articles=res2.data.data;
-    console.log('SIDEEEEEEE:::',articles);
     articles.forEach((item2) => {
         html2+=
         `
@@ -34,7 +30,7 @@ API.call().get('articles/popular?limit=1').then(function(res2) {
                 </div>
                 <div class="col-md-6">
                     <div class="detail-inner-content">
-                        <a href="blog.html" class="post-tag">${item2.category.name}</a>
+                        <a href="category.html" class="post-tag">${item2.category.name}</a>
                         <h4 class="post-title"><a href="detail.html?id=${item2.id}">${item2.title}</a></h4>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -65,7 +61,7 @@ API.call().get(`articles/${id}`).then(function(res) {
     /* html */
     `
     <div class="detail-content-top">
-        <a href="blog.html" class="post-tag">${item.category.name}</a>
+        <a href="category.html" class="post-tag">${item.category.name}</a>
         <h2 class="title">${item.title}</h2>
         <div class="bd-content-inner">
             <div class="blog-post-meta">
@@ -89,8 +85,8 @@ API.call().get(`articles/${id}`).then(function(res) {
     <div class="detail-thumb">
         <img src="${item.thumb}" alt="${item.title}">
     </div>
-   ${item.description}
-   ${item.content}
+   <p class="mt-3">${item.description}</p>
+   <div>${item.content}</div>
     <div class="detail-inner mt-5">
         <p class="mb-4">Bài viết khác</p>
         ${html3}
@@ -107,8 +103,8 @@ API.call().get(`articles/${id}`).then(function(res) {
                 <div class="post-tags">
                     <h5 class="title">Tags:</h5>
                     <ul class="list-wrap">
-                        <li><a href="blog.html">Art & Design</a></li>
-                        <li><a href="blog.html">Video</a></li>
+                        <li><a href="category.html">Art & Design</a></li>
+                        <li><a href="category.html">Video</a></li>
                     </ul>
                 </div>
             </div>
