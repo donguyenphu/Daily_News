@@ -34,11 +34,11 @@ API.call().get('categories_news').then(function (res) {
         if (index < 3) {
             html +=
                 /* html */
-                `<li><a href="category.html?id=${item.id}">${item.name}</a></li>`;
+                `<li><a href="category.html?id=${item.category.id}">${item.name}</a></li>`;
         }
         else {
             /* html */
-            html2 += `<li><a href="category.html?id=${item.id}">${item.name}</a></li>`
+            html2 += `<li><a href="category.html?id=${item.category.id}">${item.name}</a></li>`
         }
     });
     html2 += `</ul>
@@ -52,7 +52,8 @@ API.call().get('articles/popular?limit=5').then(function (res) {
     const articles = res.data.data;
     let htmlMain = '';
     let htmlMinor = '';
-
+    console.log(articles);
+    
     articles.forEach((item, index) => {
         let thumb = item.thumb;
         let title = item.title;
@@ -68,7 +69,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                         <a href="detail.html?id=${item.id}"><img src="${thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="banner-post-content-two">
-                        <a href="category.html" class="post-tag">${name}</a>
+                        <a href="category.html?id=${item.category.id}" class="post-tag">${name}</a>
                         <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
@@ -89,7 +90,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                         <a href="detail.html?id=${item.id}"><img src="${thumb}" alt=""></a>
                     </div>
                     <div class="banner-post-content-two">
-                        <a href="category.html" class="post-tag">${name}</a>
+                        <a href="category.html?id=${item.category.id}" class="post-tag">${name}</a>
                         <h2 class="post-title"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
@@ -120,11 +121,11 @@ API.call().get('articles/popular?limit=6').then(function (res) {
             <div class="col-lg-4">
                 <div class="editor-post-item">
                     <div class="editor-post-thumb">
-                        <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                        <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="editor-post-content">
-                        <a href="category.html" class="post-tag-two">${item.category.name}</a>
-                        <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+                        <a href="category.html?id=${item.category.id}" class="post-tag-two">${item.category.name}</a>
+                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
@@ -188,13 +189,15 @@ API.call().get('articles/popular?limit=6').then(function (res) {
 
 
 function renderCWATitle(item) {
-    return `
+    return
+    /* html */
+     `
     <div class="section-title-wrap mb-30">
         <div class="section-title" id="popularPostTitle">
             <h2 class="title">${item.name}</h2>
         </div>
         <div class="view-all-btn">
-            <a href="category.html" class="link-btn">View All
+            <a href="category.html?id=${item.category.id}" class="link-btn">View All
                 <span class="svg-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                         <path
@@ -217,14 +220,16 @@ function renderCWALargePostEven(item, category) {
     // const title = item.title;
     const {id, thumb, title} = item;
 
-    return `
+    return 
+    /* html */
+    `
     <div class="col-54" id="bigPostRecent">
         <div class="overlay-post-two">
             <div class="overlay-post-thumb">
                 <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
             </div>
             <div class="overlay-post-content">
-                <a href="category.html" class="post-tag">News</a>
+                <a href="category.html?id=${item.category.id}" class="post-tag">News</a>
                 <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
                 <div class="blog-post-meta white-blog-meta">
                     <ul class="list-wrap">
@@ -248,7 +253,7 @@ function renderCWASmallPostsEven(items, category) {
                 <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
             </div>
             <div class="horizontal-post-content">
-                <a href="category.html" class="post-tag">Gadget</a>
+                <a href="category.html?id=${item.category.id}" class="post-tag">Gadget</a>
                 <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
@@ -270,8 +275,8 @@ function renderCWALargePostOdd(item, category) {
                 <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
             </div>
             <div class="trending-post-content">
-                <a href="category.html" class="post-tag">Technology</a>
-                <h2 class="post-title bold-underline"><a href="detail.html">${title}</a></h2>
+                <a href="category.html?id=${item.category.id}" class="post-tag">Technology</a>
+                <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
                         <li><i class="flaticon-user"></i>by<a
@@ -373,14 +378,15 @@ API.call().get('articles/popular?limit=4').then(function (res) {
 
     articles.forEach((item) => {
         html +=
+        /* html */
             `
             <div class="weekly-post-item weekly-post-two">
                 <div class="weekly-post-thumb">
-                    <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                    <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                 </div>
                 <div class="weekly-post-content">
-                    <a href="category.html" class="post-tag">${item.category.name}</a>
-                    <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+                    <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                    <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                     <div class="blog-post-meta">
                         <ul class="list-wrap">
                             <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
@@ -389,7 +395,7 @@ API.call().get('articles/popular?limit=4').then(function (res) {
                     </div>
                     <p>${item.description}</p>
                     <div class="view-all-btn">
-                        <a href="detail.html" class="link-btn">Read More
+                        <a href="detail.html?id=${item.id}" class="link-btn">Read More
                             <span class="svg-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
@@ -420,11 +426,11 @@ API.call().get('articles/popular?limit=5').then(function (res) {
             `
             <div class="popular-post align-items-stretch">
                 <div class="thumb">
-                    <a href="detail.html" class="h-100"><img src="${item.thumb}" alt="${item.title}" class="h-100 object-fit-cover"></a>
+                    <a href="detail.html?id=${item.id}" class="h-100"><img src="${item.thumb}" alt="${item.title}" class="h-100 object-fit-cover"></a>
                 </div>
                 <div class="content">
-                    <a href="category.html" class="post-tag-two">${item.category.name}</a>
-                    <h2 class="post-title"><a href="detail.html">${item.title}</a></h2>
+                    <a href="category.html?id=${item.category.id}" class="post-tag-two">${item.category.name}</a>
+                    <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                     <div class="blog-post-meta">
                         <ul class="list-wrap">
                             <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
@@ -449,11 +455,11 @@ API.call().get('articles/popular?limit=4').then(function (res) {
         if (!index) {
             html += `<div class="sidebar-overlay-post">
                         <div class="so-post-thumb">
-                            <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                            <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                         </div>
                         <div class="so-post-content">
-                            <a href="category.html" class="post-tag">${item.category.name}</a>
-                            <h4 class="post-title"><a href="detail.html">${item.title}</a></h4>
+                            <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                            <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
                             <div class="blog-post-meta white-blog-meta">
                                 <ul class="list-wrap">
                                     <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
@@ -486,11 +492,11 @@ API.call().get('articles/popular?limit=10').then(function (res) {
             <div class="col-lg-3">
                 <div class="overlay-post-three">
                     <div class="overlay-post-thumb-three">
-                        <a href="detail.html"><img src="${item.thumb}" alt="${item.title}"></a>
+                        <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="overlay-post-content-three">
-                        <a href="category.html" class="post-tag">${item.category.name}</a>
-                        <h2 class="post-title bold-underline"><a href="detail.html">${item.title}</a></h2>
+                        <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                        <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>

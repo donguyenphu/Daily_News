@@ -51,8 +51,8 @@ RegisterFullForm.innerHTML =
         <div class="row justify-content-center d-flex">
             <div class="col-lg-6 col-md-10 align-items-stretch">
                 <div class="contact-img">
-                    <img src="./assets/img/login/login-icon-in-trendy-flat-style-isolated-on-white-background-approach-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-flat-style-for-graphic-design-vector.jpg"
-                        alt="Hãy đăng kí tại đây" class="object-fit-contain w-100">
+                    <img src=""
+                        alt="" class="object-fit-contain w-100">
                 </div>
             </div>
             <div class="col-lg-6 align-items-stretch">
@@ -108,10 +108,9 @@ const phone=document.getElementById('phone');
 const password=document.getElementById('password');
 const address=document.getElementById('address');
 const AuthForm=document.getElementById('AuthForm');
-const RegisterWrapper=document.getElementById('RegisterWrapper');
+let RegisterWrapper=document.getElementById('RegisterWrapper');
 const formMessage=document.getElementById('formMessage');
-RegisterWrapper.innerHTML=
-`
+RegisterWrapper.innerHTML=`
         <div id="formMessage"></div>
         <h4 class="title">Điền thông tin ngay</h4>
         <p>Đăng kí ngay bây giờ</p>
@@ -142,6 +141,9 @@ RegisterWrapper.innerHTML=
         <p class="ajax-response mb-0"></p>
 `;
 
+
+console.log('NOW:',RegisterWrapper.innerHTML);
+
 /**
  * name
  * email
@@ -165,7 +167,7 @@ AuthForm.addEventListener('submit', function(res) { /// no errors
             password:data.Pass
         }
         localStorage.setItem(checkElm,Log);
-        API.call().post('auth/login',data).then(function(ress) {
+        API.call().post('auth/login',Log).then(function(ress) {
             window.location.href='index.html';
         });
     }).catch(function(err) {
