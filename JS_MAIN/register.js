@@ -48,42 +48,6 @@ RegisterFullForm.innerHTML =
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center d-flex">
-            <div class="col-lg-6 col-md-10 align-items-stretch">
-                <div class="contact-img">
-                    <img src=""
-                        alt="" class="object-fit-contain w-100">
-                </div>
-            </div>
-            <div class="col-lg-6 align-items-stretch">
-                <div class="contact-form">
-                    <h4 class="title">Hãy liên hệ với chúng tôi</h4>
-                    <p>Đăng kí để cập nhật những tin tức mới nhất</p>
-                    <form id="contact-form" action="assets/mail.php" method="POST">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-grp">
-                                    <input type="text" name="name" placeholder="Tên">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-grp">
-                                    <input type="email" name="email" placeholder="Email*">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-grp">
-                            <input type="number" name="phone" placeholder="Số điện thoại">
-                        </div>
-                        <div class="form-grp">
-                            <textarea name="message" placeholder="Mô tả"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-two">Đăng kí ngay</button>
-                    </form>
-                    <p class="ajax-response mb-0"></p>
-                </div>
-            </div>
-        </div>
 `;
 GoogleMap.innerHTML= /* html */
 `
@@ -107,14 +71,16 @@ const email=document.getElementById('email');
 const phone=document.getElementById('phone');
 const password=document.getElementById('password');
 const address=document.getElementById('address');
-const AuthForm=document.getElementById('AuthForm');
+let AuthForm=document.getElementById('AuthForm');
 let RegisterWrapper=document.getElementById('RegisterWrapper');
 const formMessage=document.getElementById('formMessage');
-RegisterWrapper.innerHTML=`
+
+
+RegisterWrapper.innerHTML+=`
         <div id="formMessage"></div>
         <h4 class="title">Điền thông tin ngay</h4>
         <p>Đăng kí ngay bây giờ</p>
-        <form id="contact-form" action="assets/mail.php" method="POST" id="auth-form">
+        <form id="contact-form" action="assets/mail.php" method="POST" id="AuthForm">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-grp">
@@ -142,7 +108,7 @@ RegisterWrapper.innerHTML=`
 `;
 
 
-console.log('NOW:',RegisterWrapper.innerHTML);
+// console.log('NOW:',RegisterWrapper.innerHTML);
 
 /**
  * name
@@ -166,7 +132,7 @@ AuthForm.addEventListener('submit', function(res) { /// no errors
             email:data.email,
             password:data.Pass
         }
-        localStorage.setItem(checkElm,Log);
+        // localStorage.setItem(checkElm,Log);
         API.call().post('auth/login',Log).then(function(ress) {
             window.location.href='index.html';
         });

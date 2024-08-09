@@ -9,8 +9,7 @@ const password=document.getElementById('password');
 const formMessage=document.getElementById('formMessage');
 const GoogleMap=document.getElementById('GoogleMap');
 
-NewsletterWrapper.innerHTML=
-`
+NewsletterWrapper.innerHTML=`
     <div class="newsletter-content">
         <h2 class="title">Cập nhật tin tức mới nhất, đúng nhất</h2>
     </div>
@@ -44,8 +43,8 @@ GoogleMap.innerHTML= /* html */
 AuthForm.addEventListener('submit', function (res) {
     res.preventDefault();
 
-    let email=email.value.trim();
-    let password=password.value.trim();
+    let vale=email.value.trim();
+    let valp=password.value.trim();
 
     const data={
         email:vale,
