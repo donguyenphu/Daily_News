@@ -9,7 +9,7 @@ const password=document.getElementById('password');
 const formMessage=document.getElementById('formMessage');
 const GoogleMap=document.getElementById('GoogleMap');
 
-NewsletterWrapper.innerHTML=`
+NewsletterWrapper.innerHTML=/* html */ `
     <div class="newsletter-content">
         <h2 class="title">Cập nhật tin tức mới nhất, đúng nhất</h2>
     </div>
@@ -56,6 +56,7 @@ AuthForm.addEventListener('submit', function (res) {
         window.location.href='index.html';
     })
     .catch(function(err) {
+        alert('SAI THONG TIN ROIIIIIIIIIIIIIIIIIIIIIIIIIIII');
         alert('THONG TIN KHONG HOP LE!');
         formMessage.innerHTML=`<div class="alert alert-danger" role="alert">THONG TIN KHONG HOP LE!</div>`;
         vale.value='';

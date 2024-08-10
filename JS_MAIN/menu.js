@@ -6,6 +6,7 @@ API.call().get('categories_news').then(function(res) {
     let html='';
     let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
                     <ul class="sub-menu">`;
+                    /// danh mục khác
     articles.forEach((item,index) => {
        if (index < 3) {
             html+=
@@ -20,6 +21,41 @@ API.call().get('categories_news').then(function(res) {
     html2+=`</ul>
         </li>`;
     menuFull.innerHTML=html+html2;
-    /// sao nó ko mở đc hả thầy
+    //// thong tin tai khoan
+    API.callWithToken().get('/auth/me').then((resMe) => {
+        let nameDisplay=resMe.data.data.name;
+        menuFull.innerHTML+= /* html */
+        `<li class="menu-item-has-children">
+            <a href="#">
+                <span>${nameDisplay}</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            </a>
+            <ul class="sub-menu">
+                <li><a href="profile.html" id="profile">Thông tin tài khoản</a></li>
+                <li><a href="change-password.html" id="change">Đổi mật khẩu</a></li>
+                <li><a href="admin-create-article.html" id="admin">Tạo bài viết mới</a></li>
+                <li><a href="admin-list-article.html" id="manage">Quản lí bài viết</a></li>
+                <li><a href="login.html" id="btnLogOut">Đăng xuất</a></li>
+            </ul>  
+        </li>`;
+    }).catch((err) => {
+        menuFull.innerHTML+= /* html */
+        `<li class="menu-item-has-children">
+            <a href="#">
+                RegLog
+            </a>
+            <ul class="sub-menu">
+                <li><a href="login.html" id="btnLogIn">Đăng nhập</a></li>
+                <li><a href="register.html" id="btnReg">Đăng ký</a></li>
+            </ul>
+        </li>`;
+    });
     preloader();
 });
+
+/*
+<li class="header-sine-in">
+            <a href="login.html" id="btnLogIn"><i class="flaticon-user"></i>Đăng nhập</a>
+        </li>
+        <li class="header-sine-in">
+            <a href="register.html" id="btnReg"><i class="flaticon-user"></i>Đăng kí</a>
+        </li> */

@@ -66,7 +66,7 @@ class Header extends HTMLElement {
                                                     <li class="active"><a href="index-3.html">Home 03 - Technology</a></li>
                                                     <li><a href="index-4.html">Home 04 - Travel</a></li>
                                                     <li><a href="index-5.html">Home 05 - Crypto</a></li>
-                                                    <li><a hr   ef="index-6.html">Home 06 - Newspaper</a></li>
+                                                   <li><a hr   ef="index-6.html">Home 06 - Newspaper</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="about.html">About Us</a></li>
@@ -88,16 +88,16 @@ class Header extends HTMLElement {
                                                     <li><a href="blog-3.html">Blog Layout 03</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="login.html">Login</a></li>
+                                            
                                         </ul>
                                     </div>
                                     <div class="header-action d-none d-md-block">
                                         <ul class="list-wrap">
                                             <li class="header-sine-in">
-                                                <a href="login.html"><i class="flaticon-user"></i>Đăng nhập</a>
+                                                <a href="#"><i class="flaticon-user"></i>Đăng nhập</a>
                                             </li>
                                             <li class="header-sine-in">
-                                                <a href="register.html"><i class="flaticon-user"></i>Đăng kí</a>
+                                                <a href="#"><i class="flaticon-user"></i>Đăng kí</a>
                                             </li>
                                         </ul>
                                     </div>
