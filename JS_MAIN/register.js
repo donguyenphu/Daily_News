@@ -63,49 +63,35 @@ GoogleMap.innerHTML= /* html */
  */
 
 
+// camelCase -> kieu lac da
+// yourName
+// myAge
 
-
-const checkElm=localStorage.getItem('ACCESS_TOKEN');
+const token = localStorage.getItem('ACCESS_TOKEN');
 const name=document.getElementById('name');
 const email=document.getElementById('email');
 const phone=document.getElementById('phone');
 const password=document.getElementById('password');
 const address=document.getElementById('address');
+// PascalCase
 let AuthForm=document.getElementById('AuthForm');
 let RegisterWrapper=document.getElementById('RegisterWrapper');
 const formMessage=document.getElementById('formMessage');
 
+// Python -> snake_case
+// your_name
+// my_age
 
-RegisterWrapper.innerHTML+=`
-        <div id="formMessage"></div>
-        <h4 class="title">Điền thông tin ngay</h4>
-        <p>Đăng kí ngay bây giờ</p>
-        <form id="contact-form" action="assets/mail.php" method="POST" id="AuthForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-grp">
-                        <input type="text" name="name" placeholder="Tên*" id="name" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-grp">
-                        <input type="email" name="email" placeholder="Email*" id="email" required>
-                    </div>
-                </div>
-            </div>
-            <div class="form-grp">
-                <input type="text" name="password" placeholder="Mật khẩu*" id="password" required>
-            </div>
-            <div class="form-grp">
-                <input type="number" name="phone" placeholder="Số điện thoại*" id="phone" required>
-            </div>
-            <div class="form-grp">
-                <textarea name="address" placeholder="Địa chỉ*" id="address"></textarea>
-            </div>
-            <button type="submit" class="btn btn-two">Đăng kí</button>
-        </form>
-        <p class="ajax-response mb-0"></p>
-`;
+// let elInputName = document.getElementById('inputName');
+// let elInputEmail = document.getElementById('inputEmail');
+// let elInputPassword = document.getElementById('inputPassword');
+
+
+
+
+
+console.log('AUTHFORM:',AuthForm);
+
 
 
 // console.log('NOW:',RegisterWrapper.innerHTML);
@@ -118,22 +104,30 @@ RegisterWrapper.innerHTML+=`
  * address
  */
 
-AuthForm.addEventListener('submit', function(res) { /// no errors
-    res.preventDefault();
+
+AuthForm.addEventListener('submit', function(event) { /// no errors
+    event.preventDefault();
+    
+    // ngăn các hành động mặc định của phần tử html, ví dụ thẻ form sẽ có hành động submit, thẻ a sẽ có hành động chuyển hướng, ...
+    // ngăn chặn hành động mặc định của form là submit dữ liệu lên server theo url ở thuộc tính action
     const data ={
-        name:Name,
-        email:Email,
-        password:Pass,
-        phone:Phone,
-        address:Address
+        name: name.value,
+        email:email.value,
+        password:password.value,
+        phone:phone.value,
+        address:address.value
     }
+    // console.log('DATA:',data);
+    
     API.call().post('users/register',data).then(function(res) {
         const Log={
             email:data.email,
-            password:data.Pass
+            password:data.password
         }
         // localStorage.setItem(checkElm,Log);
+        
         API.call().post('auth/login',Log).then(function(ress) {
+            localStorage.setItem(ACCESS_TOKEN,ress.data.access_token);
             window.location.href='index.html';
         });
     }).catch(function(err) {
@@ -141,6 +135,7 @@ AuthForm.addEventListener('submit', function(res) { /// no errors
         showErrorMessages(errors,formMessage);
     });
 });
+
 
 
 

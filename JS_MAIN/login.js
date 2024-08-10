@@ -52,7 +52,7 @@ AuthForm.addEventListener('submit', function (res) {
     }
 
     API.call('auth/login',data).then(function(res) {
-        localStorage.setItem('ACCESS_TOKEN',res.data.access_token)
+        localStorage.setItem('ACCESS_TOKEN',res.data.access_token);
         window.location.href='index.html';
     })
     .catch(function(err) {
