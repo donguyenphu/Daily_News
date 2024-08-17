@@ -110,7 +110,7 @@ AuthForm.addEventListener('submit', function(event) { /// no errors
     
     // ngăn các hành động mặc định của phần tử html, ví dụ thẻ form sẽ có hành động submit, thẻ a sẽ có hành động chuyển hướng, ...
     // ngăn chặn hành động mặc định của form là submit dữ liệu lên server theo url ở thuộc tính action
-    const data ={
+    const data = {
         name: name.value,
         email:email.value,
         password:password.value,
@@ -119,7 +119,7 @@ AuthForm.addEventListener('submit', function(event) { /// no errors
     }
     // console.log('DATA:',data);
     
-    API.call().post('users/register',data).then(function(res) {
+    API.call().post('users/register',data).then(function(ress) {
         const Log={
             email:data.email,
             password:data.password
@@ -127,6 +127,7 @@ AuthForm.addEventListener('submit', function(event) { /// no errors
         // localStorage.setItem(checkElm,Log);
         
         API.call().post('auth/login',Log).then(function(ress) {
+            localStorage.removeItem(ACCESS_TOKEN);
             localStorage.setItem(ACCESS_TOKEN,ress.data.access_token);
             window.location.href='index.html';
         });

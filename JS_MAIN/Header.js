@@ -58,47 +58,8 @@ class Header extends HTMLElement {
                                         <a href="index.html"><img src="assets/img/logo/w_logo.png" alt=""></a>
                                     </div>
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
-                                        <ul class="navigation" id="menuFull">
-                                            <li class="active menu-item-has-children"><a href="#">Home</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="index.html">Home 01 - Default</a></li>
-                                                    <li><a href="index-2.html">Home 02 - Gaming</a></li>
-                                                    <li class="active"><a href="index-3.html">Home 03 - Technology</a></li>
-                                                    <li><a href="index-4.html">Home 04 - Travel</a></li>
-                                                    <li><a href="index-5.html">Home 05 - Crypto</a></li>
-                                                   <li><a hr   ef="index-6.html">Home 06 - Newspaper</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li class="menu-item-has-children"><a href="#">Features</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item-has-children"><a href="#">Single Post Layout</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="blog-details.html">Single post 01</a></li>
-                                                            <li><a href="blog-details-two.html">Single post 02</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="author.html">Author Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="#">Categories</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="category.html">Blog Default</a></li>
-                                                    <li><a href="blog-2.html">Blog Layout 02</a></li>
-                                                    <li><a href="blog-3.html">Blog Layout 03</a></li>
-                                                </ul>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <div class="header-action d-none d-md-block">
-                                        <ul class="list-wrap">
-                                            <li class="header-sine-in">
-                                                <a href="#"><i class="flaticon-user"></i>Đăng nhập</a>
-                                            </li>
-                                            <li class="header-sine-in">
-                                                <a href="#"><i class="flaticon-user"></i>Đăng kí</a>
-                                            </li>
+                                        <ul class="navigation gap-9" id="menuFull">
+                                    
                                         </ul>
                                     </div>
                                     <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>

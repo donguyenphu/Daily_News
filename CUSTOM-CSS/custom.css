@@ -6,3 +6,6 @@
 .object-fit-cover {
     object-fit: cover;
 }
+.menuFullFixMarginRight {
+    margin-right: 15px;
+}

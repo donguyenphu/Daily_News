@@ -21,6 +21,10 @@ const onlyImg02 = document.getElementById('onlyImg02');
 const SubscribeFollowers = document.getElementById('SubscribeFollowers');
 const elCategoriesWithArticles = document.getElementById('categoriesWithArticles');
 
+let item=localStorage.getItem('ACCESS_TOKEN');
+console.log(item);
+
+
 
 const baseURL = 'https://apiforlearning.zendvn.com/api/v2';
 /// RENDER MENUS
@@ -32,13 +36,12 @@ API.call().get('categories_news').then(function (res) {
                     <ul class="sub-menu">`;
     articles.forEach((item, index) => {
         if (index < 3) {
-            html +=
-                /* html */
-                `<li><a href="category.html?id=${item.category.id}">${item.name}</a></li>`;
+            html +=/* html */
+                `<li><a href="category.html?id=${item.id}">${item.name}</a></li>`;
         }
         else {
             /* html */
-            html2 += `<li><a href="category.html?id=${item.category.id}">${item.name}</a></li>`
+            html2 += `<li><a href="category.html?id=${item.id}">${item.name}</a></li>`
         }
     });
     html2 += `</ul>
@@ -189,15 +192,12 @@ API.call().get('articles/popular?limit=6').then(function (res) {
 
 
 function renderCWATitle(item) {
-    return
-    /* html */
-     `
-    <div class="section-title-wrap mb-30">
+    return`<div class="section-title-wrap mb-30">
         <div class="section-title" id="popularPostTitle">
             <h2 class="title">${item.name}</h2>
         </div>
         <div class="view-all-btn">
-            <a href="category.html?id=${item.category.id}" class="link-btn">View All
+            <a href="category.html?id=${item.id}" class="link-btn">View All
                 <span class="svg-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                         <path
@@ -218,19 +218,19 @@ function renderCWALargePostEven(item, category) {
     // const thumb = item.thumb;
     // const id = item.id;
     // const title = item.title;
-    const {id, thumb, title} = item;
 
-    return 
-    /* html */
-    `
+
+    // const {id, thumb, title} = item;
+
+    return `
     <div class="col-54" id="bigPostRecent">
         <div class="overlay-post-two">
             <div class="overlay-post-thumb">
-                <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+                <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
             </div>
             <div class="overlay-post-content">
-                <a href="category.html?id=${item.category.id}" class="post-tag">News</a>
-                <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
+                <a href="category.html?id=${item.id}" class="post-tag">News</a>
+                <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                 <div class="blog-post-meta white-blog-meta">
                     <ul class="list-wrap">
                         <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
@@ -245,16 +245,16 @@ function renderCWALargePostEven(item, category) {
 
 function renderCWASmallPostsEven(items, category) {
     let html = '';
-    items.forEach(item => {
-        const {id, thumb, title} = item;
+    items.forEach((item) => {
+        // const {id, thumb, title} = item;
         html += /*html */`
         <div class="horizontal-post-two">
             <div class="horizontal-post-thumb">
-                <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
+                <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
             </div>
             <div class="horizontal-post-content">
-                <a href="category.html?id=${item.category.id}" class="post-tag">Gadget</a>
-                <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
+                <a href="category.html?id=${item.id}" class="post-tag">Gadget</a>
+                <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
                         <li><i class="flaticon-calendar"></i>27 August, 2024</li>
@@ -275,7 +275,7 @@ function renderCWALargePostOdd(item, category) {
                 <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
             </div>
             <div class="trending-post-content">
-                <a href="category.html?id=${item.category.id}" class="post-tag">Technology</a>
+                <a href="category.html?id=${item.id}" class="post-tag">Technology</a>
                 <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
@@ -372,7 +372,7 @@ API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
 
 /// WEEKLY BEST NEWS
 API.call().get('articles/popular?limit=4').then(function (res) {
-    WeeklyBestNews.innerHTML = '<h2 class="title"Tin tốt mỗi tuần</h2>';
+    WeeklyBestNews.innerHTML = '<h2 class="title">Tin tốt mỗi tuần</h2>';
     let html = '';
     let articles = res.data.data;
 
@@ -385,7 +385,7 @@ API.call().get('articles/popular?limit=4').then(function (res) {
                     <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                 </div>
                 <div class="weekly-post-content">
-                    <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                    <a href="category.html?id=${item.id}" class="post-tag">${item.category.name}</a>
                     <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                     <div class="blog-post-meta">
                         <ul class="list-wrap">
@@ -429,7 +429,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                     <a href="detail.html?id=${item.id}" class="h-100"><img src="${item.thumb}" alt="${item.title}" class="h-100 object-fit-cover"></a>
                 </div>
                 <div class="content">
-                    <a href="category.html?id=${item.category.id}" class="post-tag-two">${item.category.name}</a>
+                    <a href="category.html?id=${item.id}" class="post-tag-two">${item.category.name}</a>
                     <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                     <div class="blog-post-meta">
                         <ul class="list-wrap">
@@ -458,7 +458,7 @@ API.call().get('articles/popular?limit=4').then(function (res) {
                             <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                         </div>
                         <div class="so-post-content">
-                            <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                            <a href="category.html?id=${item.id}" class="post-tag">${item.category.name}</a>
                             <h4 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h4>
                             <div class="blog-post-meta white-blog-meta">
                                 <ul class="list-wrap">
@@ -495,7 +495,7 @@ API.call().get('articles/popular?limit=10').then(function (res) {
                         <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="overlay-post-content-three">
-                        <a href="category.html?id=${item.category.id}" class="post-tag">${item.category.name}</a>
+                        <a href="category.html?id=${item.id}" class="post-tag">${item.category.name}</a>
                         <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">

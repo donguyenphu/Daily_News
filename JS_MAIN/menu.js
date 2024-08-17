@@ -21,7 +21,6 @@ API.call().get('categories_news').then(function(res) {
     html2+=`</ul>
         </li>`;
     menuFull.innerHTML=html+html2;
-    //// thong tin tai khoan
     API.callWithToken().get('/auth/me').then((resMe) => {
         let nameDisplay=resMe.data.data.name;
         menuFull.innerHTML+= /* html */
@@ -35,8 +34,9 @@ API.call().get('categories_news').then(function(res) {
                 <li><a href="admin-create-article.html" id="admin">Tạo bài viết mới</a></li>
                 <li><a href="admin-list-article.html" id="manage">Quản lí bài viết</a></li>
                 <li><a href="login.html" id="btnLogOut">Đăng xuất</a></li>
-            </ul>  
+            </ul> 
         </li>`;
+        console.log('MENUFULL HTML:',menuFull.innerHTML);
     }).catch((err) => {
         menuFull.innerHTML+= /* html */
         `<li class="menu-item-has-children">
@@ -52,10 +52,33 @@ API.call().get('categories_news').then(function(res) {
     preloader();
 });
 
-/*
-<li class="header-sine-in">
-            <a href="login.html" id="btnLogIn"><i class="flaticon-user"></i>Đăng nhập</a>
-        </li>
-        <li class="header-sine-in">
-            <a href="register.html" id="btnReg"><i class="flaticon-user"></i>Đăng kí</a>
-        </li> */
+menuFull.addEventListener('click', function(s) {
+    s.preventDefault();
+    let el=s.target;
+    if (el.id ==='btnLogOut') {
+        console.log(12222222222222222222);
+        localStorage.removeItem(ACCESS_TOKEN); 
+        window.location.href='index.html';
+    }
+    else if (el.id === 'btnLogIn') {
+        console.log(1222222222222222222222222222222222222222222);
+        
+        localStorage.removeItem(ACCESS_TOKEN);
+        window.location.href='login.html';
+    }
+    else if (el.id === 'btnReg')  {
+        window.location.href='register.html';
+    }
+    else if (el.id==='change') {
+        window.location.href='change-password.html';
+    }
+    else if (el.id==='admin') {
+        window.location.href='admin-create-article.html';
+    }
+    else if (el.id==='manage') {
+        window.location.href='admin-list-create.html';
+    }
+    else if (el.id==='profile') {
+        window.location.href='profile.html';
+    }
+});
