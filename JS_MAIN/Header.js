@@ -57,14 +57,14 @@ class Header extends HTMLElement {
                                     <div class="logo d-none">
                                         <a href="index.html"><img src="assets/img/logo/w_logo.png" alt=""></a>
                                     </div>
-                                    <div class="navbar-wrap main-menu d-none d-lg-flex">
+                                    <div class="navbar-wrap main-menu d-none d-lg-flex" style="flex: 2">
                                         <ul class="navigation gap-9" id="menuFull">
                                     
                                         </ul>
                                     </div>
                                     <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
                                 </nav>
-                            </div>
+                            </div>  
 
                             <div class="mobile-menu">
                                 <nav class="menu-box">
