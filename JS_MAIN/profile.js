@@ -6,7 +6,7 @@ console.log(123);
 /// sdt 
 /// addd
 const email=document.getElementById('email');
-const name=document.getElementById('name');
+const Name=document.getElementById('name');
 const AuthForm=document.getElementById('AuthForm');
 const phone=document.getElementById('phone');
 const address=document.getElementById('address')
@@ -15,7 +15,7 @@ const formMessage=document.getElementById('formMessage');
 API.callWithToken().get('/auth/me').then(res => {
     const data=res.data.data;
     email.value=data.email;
-    name.value=data.name;
+    Name.value=data.name;
     phone.value=data.phone;
     address.value=data.address;
 }).catch(err => {
@@ -27,7 +27,7 @@ AuthForm.addEventListener('submit', function(res) {
     const formDat=new FormData(AuthForm);
     const data=Object.fromEntries(formDat);
 
-    API.callWithToken().put('/auth/update').then((res) => {
+    API.callWithToken().put('/auth/update',data).then((res) => {
         // formMessage.innerHTML=`<div class="alert alert-success" role="alert">
         //     Cập nhật thông tin thành công
         // </div>`;
