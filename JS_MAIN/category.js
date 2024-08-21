@@ -30,8 +30,7 @@ const WrapperNewsletter=document.getElementById('WrapperNewsletter');
 /// em cảm ơn thầy ạ
 ///////////////////////// =)
 /// e làm được rồi thầy ơiii
-let first = parseInt(urlParams.get('page'));
-console.log('first page::::',first);    
+let first = parseInt(urlParams.get('page'));   
 if (isNaN(first) === true) {
     first = 1;
 }
@@ -40,34 +39,11 @@ if (isNaN(parseInt(id))) {
     window.location.href = "index.html";
 }
 
-console.log('PAGESSSSSSSS:', first, 'AND:', id);
 
 
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
-WrapperNewsletter.innerHTML=
-`
-    <div class="sidebar-newsletter" id="WrapperNewsletter">
-        <div class="icon"><i class="flaticon-envelope"></i></div>
-        <h4 class="title">TRANG TIN TỨC HIỆN ĐẠI</h4>
-        <p>Đăng kí để nhận thông báo mới nhất</p>
-        <div class="sidebar-newsletter-form-two">
-            <form action="#">
-                <div class="form-grp">
-                    <button type="submit" class="btn" href="login.html">Đăng nhập ngay</button>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="checkbox">
-                    <label for="checkbox">Lưu thông tin cá nhân</label>
-                </div>
-            </form>
-        </div>
-    </div>
-`;
-console.log('WrapperNewsletter.INNERHTML',WrapperNewsletter.innerHTML);
 
-// sao lại render lại menu ở đây nè, nó ghi đè code trong file menu.js rồi
-/// e quên để lại thầy ạ
 
 
 
@@ -75,20 +51,16 @@ myPagination.addEventListener('click', function (e) {
     const el = e.target;
     if (el.classList.contains('page-link')) {
         first = parseInt(el.innerText);
-        console.log('NEWWWW:::::::::::', first);
         getArticles(first);
     }
     if (el.classList.contains('page-link-prev') === true) {
         first--;
-        console.log('prevvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv:', first);
         getArticles(first);
     }
     if (el.classList.contains('page-link-next') === true) {
         // getArticles(first);
         first++;
         getArticles(first);
-        console.log('nexxxxxxxxxxxxxxxxxxxx', first);
-        
     }
 });
 
@@ -101,9 +73,6 @@ function renderPagination(total,first) {
     let html = `<li class="page-item ${disPrev}"><a class="page-link-prev" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
         let active = (index === first ? 'active pointer-events-none' : '');
-        // if (index === first) {
-        //     mergeAndPush(first); /// tao trang moi
-        // }
         html += `<li class="page-item ${active}"><a class="page-link" href="#">${index}</a></li>`;
     }
     html += `<li class="page-item ${disNex}"><a class="page-link-next" href="#">Next</a></li>`;
@@ -121,12 +90,8 @@ function getArticles(first) {
             let newPageLink = window.location.pathname + "?" + urlParams.toString();
             history.pushState(null, "", newPageLink);
         }
-        console.log('TOTAL:::: ', totalPages);
         let TitleAll = '';
         renderPagination(totalPages,first);
-        // let overCategoryName='';
-        /// for render pagination()
-        // renderPagination(totalPages);
         articles.forEach((item) => {
             TitleAll = item.category.name;
             html += /* html */
