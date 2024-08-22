@@ -72,7 +72,7 @@ menuFull.addEventListener('click', function(s) {
         window.location.href='admin-create-article.html';
     }
     else if (el.id==='manage') {
-        window.location.href='admin-list-create.html';
+        window.location.href='admin-list-article.html';
     }
     else if (el.id==='profile') {
         window.location.href='profile.html';

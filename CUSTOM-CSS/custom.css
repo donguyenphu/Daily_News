@@ -8,4 +8,18 @@
 }
 .menuFullFixMarginRight {
     margin-right: 15px;
+}   
+table {
+    /* Allows spacing between cells */
+    border-spacing: 20px 10px; /* 20px horizontal, 10px vertical spacing */
+    width: 100%;
+}
+
+th, td {
+    padding: 10px; /* Adjust padding to increase space within each cell */
+    text-align: left;
+    border: 1px solid #333;
+}
+th {
+    background-color: #f4f4f4;
 }
