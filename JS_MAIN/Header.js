@@ -36,7 +36,7 @@ class Header extends HTMLElement {
                             <div class="header-top-right">
                                 <div class="header-search-wrap header-search-wrap-two">
                                     <form action="#">
-                                        <input type="text" placeholder="Search here . . .">
+                                        <input type="text" placeholder="Search here . . ." id="inpSearch">
                                         <button type="submit"><i class="flaticon-search"></i></button>
                                     </form>
                                 </div>
@@ -77,7 +77,7 @@ class Header extends HTMLElement {
                                     </div>
                                     <div class="mobile-search">
                                         <form action="#">
-                                            <input type="text" placeholder="Search here..." id="inpSearch">
+                                            <input type="text" placeholder="Search here...">
                                             <button><i class="flaticon-search"></i></button>
                                         </form>
                                     </div>

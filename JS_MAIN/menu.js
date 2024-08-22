@@ -6,7 +6,6 @@ API.call().get('categories_news').then(function(res) {
     let html='';
     let html2=`<li class="menu-item-has-children"><a href="#">Danh mục khác</a>
                     <ul class="sub-menu">`;
-                    /// danh mục khác
     articles.forEach((item,index) => {
        if (index < 3) {
             html+=
@@ -36,7 +35,6 @@ API.call().get('categories_news').then(function(res) {
                 <li><a href="login.html" id="btnLogOut">Đăng xuất</a></li>
             </ul> 
         </li>`;
-        console.log('MENUFULL HTML:',menuFull.innerHTML);
     }).catch((err) => {
         menuFull.innerHTML+= /* html */
         `<li class="menu-item-has-children">
@@ -56,12 +54,10 @@ menuFull.addEventListener('click', function(s) {
     s.preventDefault();
     let el=s.target;
     if (el.id ==='btnLogOut') {
-        console.log(12222222222222222222);
         localStorage.removeItem(ACCESS_TOKEN); 
         window.location.href='index.html';
     }
     else if (el.id === 'btnLogIn') {
-        console.log(1222222222222222222222222222222222222222222);
         
         localStorage.removeItem(ACCESS_TOKEN);
         window.location.href='login.html';

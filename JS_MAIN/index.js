@@ -21,8 +21,7 @@ const onlyImg02 = document.getElementById('onlyImg02');
 const SubscribeFollowers = document.getElementById('SubscribeFollowers');
 const elCategoriesWithArticles = document.getElementById('categoriesWithArticles');
 
-let item=localStorage.getItem('ACCESS_TOKEN');
-console.log(item);
+let item=localStorage.getItem('ACCESS_TOKEN');  
 
 
 
@@ -55,7 +54,6 @@ API.call().get('articles/popular?limit=5').then(function (res) {
     const articles = res.data.data;
     let htmlMain = '';
     let htmlMinor = '';
-    console.log(articles);
     
     articles.forEach((item, index) => {
         let thumb = item.thumb;
@@ -211,19 +209,11 @@ function renderCWATitle(item) {
             </a>
         </div>
         <div class="section-title-line"></div>
-    </div>`
+    </div>`;
 }
 
 function renderCWALargePostEven(item, category) {
-    // const thumb = item.thumb;
-    // const id = item.id;
-    // const title = item.title;
-
-
-    // const {id, thumb, title} = item;
-
-    return `
-    <div class="col-54" id="bigPostRecent">
+    return `<div class="col-54" id="bigPostRecent">
         <div class="overlay-post-two">
             <div class="overlay-post-thumb">
                 <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
@@ -240,7 +230,7 @@ function renderCWALargePostEven(item, category) {
                 </div>
             </div>
         </div>
-    </div>`
+    </div>`;
 }
 
 function renderCWASmallPostsEven(items, category) {
@@ -338,7 +328,6 @@ function renderCWASmallPostsOdd(items, category) {
 API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
     const data = res.data.data;
     let html = '';
-    console.log(data);
     
     data.forEach((item, idx) => {
         const articles = item.articles; // 4
