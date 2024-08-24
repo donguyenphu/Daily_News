@@ -22,7 +22,8 @@ const ACCESS_TOKEN='ACCESS_TOKEN';
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
 
-inpSearch.addEventListener('keyup', function(res) {
+inpSearch.addEventListener('submit', function(res) {
+    res.preventDefault();
     if (res.key == 'Enter') {
         let word=inpSearch.value.trim();
         if (word.length === 0) {

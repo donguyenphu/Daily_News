@@ -5,12 +5,12 @@ dayjs.locale('vi');
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let id = urlParams.get('id');
+const keyword=urlParams.get('keyword');
 const RecentTitle=document.getElementById('RecentTitle');
 const RecentPostWrapper=document.getElementById('RecentPostWrapper');
 const myPagination=document.getElementById('myPagination');
 const NumberPostResults=document.getElementById('NumberPostResults');
 const articlesMain=document.getElementById('articlesMain');
-const keyword=inpSearch.value;
 const tot2=0;
 let first = parseInt(urlParams.get('page'));   
 if (isNaN(first) === true) {
