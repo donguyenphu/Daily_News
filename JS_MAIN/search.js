@@ -1,10 +1,9 @@
-console.log(123);
+console.log(1231231231231123);
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
 // TIME
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
-let id = urlParams.get('id');
 const keyword=urlParams.get('keyword');
 const RecentTitle=document.getElementById('RecentTitle');
 const RecentPostWrapper=document.getElementById('RecentPostWrapper');
@@ -12,14 +11,14 @@ const myPagination=document.getElementById('myPagination');
 const NumberPostResults=document.getElementById('NumberPostResults');
 const articlesMain=document.getElementById('articlesMain');
 const tot2=0;
+
+
+const id = urlParams.get('id');
 let first = parseInt(urlParams.get('page'));   
 if (isNaN(first) === true) {
     first = 1;
 }
 first=1;
-if (isNaN(parseInt(id))) {
-    window.location.href = "index.html";
-}
 
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
@@ -65,6 +64,7 @@ function getArticles(first) {
         const articles=res.data.data;
         const Pages=res.data.meta.last_page;
         const totalPost=res.data.meta.total;
+        renderPagination(Pages,first);
         articles.forEach((item) => {
             const regex=new RegExp(keyword,'gi');
             // for post
@@ -106,9 +106,8 @@ function getArticles(first) {
                 </div>
             `;
         }); 
-        NumberPostResults.innerHTML=`Tìm thấy ${tot2} bài viết với từ khóa ${keyword}`;
+        NumberPostResults.innerHTML=`Tìm thấy ${totalPost} bài viết với từ khóa ${keyword}`;
         articlesMain.innerHTML=html;
-        console.log(articlesMain.innerHTML,'here');
     })
     .catch(function (error) {
         window.location.href='index.html';

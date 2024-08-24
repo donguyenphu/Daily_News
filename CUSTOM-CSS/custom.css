@@ -23,3 +23,11 @@ th, td {
 th {
     background-color: #f4f4f4;
 }
+#NumberPostResults {
+    font-size: 30px;
+}
+#NumberPostResultsWrapper {
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+}

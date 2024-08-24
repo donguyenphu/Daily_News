@@ -35,7 +35,7 @@ class Header extends HTMLElement {
                         <div class="col-lg-8">
                             <div class="header-top-right">
                                 <div class="header-search-wrap header-search-wrap-two">
-                                    <form action="#">
+                                    <form action="#" id="searchForm">
                                         <input type="text" placeholder="Search here . . ." id="inpSearch">
                                         <button type="submit"><i class="flaticon-search"></i></button>
                                     </form>

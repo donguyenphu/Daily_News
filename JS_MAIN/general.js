@@ -18,22 +18,20 @@ const API = {
 };
 
 const inpSearch=document.getElementById('inpSearch');
+const searchForm=document.getElementById('searchForm');
 const ACCESS_TOKEN='ACCESS_TOKEN';
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
 
-inpSearch.addEventListener('submit', function(res) {
+searchForm.addEventListener('submit', function(res) {
     res.preventDefault();
-    if (res.key == 'Enter') {
-        let word=inpSearch.value.trim();
-        if (word.length === 0) {
-            alert('Khong hop le!');
-            inpSearch.value='';
-        }
-        else {
-            inpSearch.value='';
-            window.location.href=`search.html?keyword=${word}`;
-        }
+    let word=inpSearch.value.trim();
+    if (word) {           
+        window.location.href=`search.html?keyword=${word}`;
+    }
+    else {
+        alert('Khong hop le!');
+        inpSearch.value='';
     }
 });
 
