@@ -31,3 +31,9 @@ th {
     margin-top: 15px;
     text-align: center;
 }
+#imageAuthor {
+    border-radius: 50%;
+    width: 115px;
+    height:  115px;
+    object-fit: cover;
+}

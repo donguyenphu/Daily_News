@@ -3,6 +3,8 @@ let WrapperNewsletter=document.getElementById('WrapperNewsletter');
 let RecentPostWrapper=document.getElementById('RecentPostWrapper');
 let RecentTitle=document.getElementById('RecentTitle');
 let DetailWrapper=document.getElementById('DetailWrapper');
+const authorWrapper=document.getElementById('authorWrapper');
+const PreNexPosts=document.getElementById('PreNexPosts');
 WrapperNewsletter.innerHTML=Newsletter(WrapperNewsletter);
 
 RecentPostsRender(RecentTitle,RecentPostWrapper);
@@ -54,8 +56,6 @@ API.call().get('articles/popular?limit=1').then(function(res2) {
 
 API.call().get(`articles/${id}`).then(function(res) {
     const item=res.data.data;
-    // console.log('ressssssssssssssssss:',res);
-    console.log('ARTICLES:',item);
     let html='';
     html+=
     
@@ -124,7 +124,66 @@ API.call().get(`articles/${id}`).then(function(res) {
         </div>
     </div>
     `;
+    let htmlauthor='';
+    htmlauthor+=`
+        <div class="blog-avatar-img">
+            <a href="#"><img src="${item.thumb}" alt="${item.title}" id="imageAuthor"></a>
+        </div>
+        <div class="blog-avatar-info">
+            <span class="designation">Author</span>
+            <h4 class="name"><a href="author.html">${item.author}</a></h4>
+            <p></p>
+        </div>
+    `;
+    let htmlPreNex='';
+    let thumb1='',thumb2='',title1='',title2='';
+    API.call().get(`articles/${id-1}`).then(function(res1) {
+        const a1=res1.data.data;
+        thumb1=a1.thumb;
+        title1=a1.title;
+    });
+    API.call().get(`articles/${id+1}`).then(function(res2) {
+        const a2=res2.data.data;
+        thumb2=a2.thumb;
+        title2=a2.title;
+    });
+    htmlPreNex+=`
+        <div class="col-md-6">
+            <div class="post-item">
+                <div class="thumb">
+                    <a href="detail.html"><img src="${thumb1}" alt="${title1}"></a>
+                </div>
+                <div class="content">
+                    <span>Previous Post</span>
+                    <h5 class="post-title"><a href="detail.html?id=${id-1}">${title1}</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="post-item next-post">
+                <div class="thumb">
+                    <a href="detail.html"><img src="${thumb2}" alt="${title2}"></a>
+                </div>
+                <div class="content">
+                    <span>Next Post</span>
+                    <h5 class="post-title"><a href="detail.html?id=${id+1}">${title2}</a></h5>
+                </div>
+            </div>
+        </div>
+    `;
+    PreNexPosts.innerHTML=htmlPreNex;
+    authorWrapper.innerHTML=htmlauthor;
     DetailWrapper.innerHTML=html;
 });
 
 /// SHOW COMMENT ITEMS
+
+function renderComment(COMMENTS) {
+
+}
+function renderCommentItem(data) {
+
+}
+function renderCommentChildItem(data) {
+
+}
