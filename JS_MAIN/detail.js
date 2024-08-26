@@ -5,19 +5,23 @@ let RecentTitle=document.getElementById('RecentTitle');
 let DetailWrapper=document.getElementById('DetailWrapper');
 const authorWrapper=document.getElementById('authorWrapper');
 const PreNexPosts=document.getElementById('PreNexPosts');
-WrapperNewsletter.innerHTML=Newsletter(WrapperNewsletter);
+const commentForm=document.getElementById('commentForm');
+const commentMessage=document.getElementById('commentMessage');
+const listComment=document.getElementById('listComment');
+const commentNotice=document.getElementById('commentNotice');
+const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
+const parentCommentId=null;
 
+
+WrapperNewsletter.innerHTML=Newsletter(WrapperNewsletter);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let id = parseInt(urlParams.get('id'));
-// API.callWithToken().get('/auth/me').then((res) => {
 
-// }).catch(err => {
-
-// }).finally(func => {
-
-// });
+let emailUser='';
+let nameUser='';
+let COMMENTS=JSON.parse(localStorage.getItem('COMMENTS')) || [];
 let html2='';
 let html3='';
 API.call().get('articles/popular?limit=1').then(function(res2) {
@@ -137,12 +141,14 @@ API.call().get(`articles/${id}`).then(function(res) {
     `;
     let htmlPreNex='';
     let thumb1='',thumb2='',title1='',title2='';
-    API.call().get(`articles/${id-1}`).then(function(res1) {
+    const preNum=id-1;
+    const nexNum=id+1;
+    API.call().get(`articles/${preNum}`).then(function(res1) {
         const a1=res1.data.data;
         thumb1=a1.thumb;
         title1=a1.title;
     });
-    API.call().get(`articles/${id+1}`).then(function(res2) {
+    API.call().get(`articles/${nexNum}`).then(function(res2) {
         const a2=res2.data.data;
         thumb2=a2.thumb;
         title2=a2.title;
