@@ -9,7 +9,7 @@ const commentForm=document.getElementById('commentForm');
 const commentMessage=document.getElementById('commentMessage');
 const listComment=document.getElementById('listComment');
 const commentNotice=document.getElementById('commentNotice');
-const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
+// const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
 const parentCommentId=null;
 
 
@@ -57,6 +57,16 @@ API.call().get('articles/popular?limit=1').then(function(res2) {
     html3=html2;
     console.log('HTML2::::',html2);
 });
+
+/*
+{
+    id,
+    email,
+    content,
+    dateTime,
+    articleId
+}
+*/
 
 API.call().get(`articles/${id}`).then(function(res) {
     const item=res.data.data;
@@ -183,6 +193,22 @@ API.call().get(`articles/${id}`).then(function(res) {
 });
 
 /// SHOW COMMENT ITEMS
+
+/*
+bắt sự kiên click vào button post comment
+    - lấy nội dung bình luận từ textarea
+    - Tạo ra bình luận (object)
+        {
+            id: self.crypto.randomUUID(),
+            email: email cua user đang đăng nhập,
+            content,
+            dateTime: thời gian hiện tại,
+            articleId: id
+        }
+    - Thêm comment mới vào mảng COMMENTS
+    - filter lại comment thuộc về bài viết đang xem -> có thể bổ sung sau
+    - Hiển thị danh sách commnent 
+*/
 
 function renderComment(COMMENTS) {
 

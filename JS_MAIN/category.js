@@ -8,7 +8,7 @@ let myPagination = document.getElementById('myPagination');
 let overCategoryName = document.getElementById('overCategoryName');
 let RecentTitle = document.getElementById('RecentTitle');
 let RecentPostWrapper = document.getElementById('RecentPostWrapper');
-const WrapperNewsletter=document.getElementById('WrapperNewsletter');
+const WrapperNewsletter = document.getElementById('WrapperNewsletter');
 /// thầy xem giúp em với thầy
 // ủa anh thấy page 1 mà em
 /// thầy đợi e chút thầy
@@ -30,11 +30,11 @@ const WrapperNewsletter=document.getElementById('WrapperNewsletter');
 /// em cảm ơn thầy ạ
 ///////////////////////// =)
 /// e làm được rồi thầy ơiii
-let first = parseInt(urlParams.get('page'));   
+let first = parseInt(urlParams.get('page'));
 if (isNaN(first) === true) {
     first = 1;
 }
-first=1;
+first = 1;
 if (isNaN(parseInt(id))) {
     window.location.href = "index.html";
 }
@@ -42,7 +42,7 @@ if (isNaN(parseInt(id))) {
 
 
 getArticles(first);
-RecentPostsRender(RecentTitle,RecentPostWrapper);
+RecentPostsRender(RecentTitle, RecentPostWrapper);
 
 
 
@@ -64,11 +64,11 @@ myPagination.addEventListener('click', function (e) {
     }
 });
 
-function renderPagination(total,first) {
+function renderPagination(total, first) {
     const disPrev = (first === 0 ? 'pointer-events-none' : '');
-    if (first===0) first++;
-    const disNex = (first === total+1 ? 'pointer-events-none' : '');
-    if (first===total+1) first--;
+    if (first === 0) first++;
+    const disNex = (first === total + 1 ? 'pointer-events-none' : '');
+    if (first === total + 1) first--;
     myPagination.innerHTML = '';
     let html = `<li class="page-item ${disPrev}"><a class="page-link-prev" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
@@ -84,14 +84,14 @@ function getArticles(first) {
         const articles = res.data.data;
         let html = '';
         let totalPages = res.data.meta.total;
-        if (first >= 1 && first <= totalPages) { 
-            console.log(first);   
+        if (first >= 1 && first <= totalPages) {
+            console.log(first);
             urlParams.set('page', first);
             let newPageLink = window.location.pathname + "?" + urlParams.toString();
             history.pushState(null, "", newPageLink);
         }
         let TitleAll = '';
-        renderPagination(totalPages,first);
+        renderPagination(totalPages, first);
         articles.forEach((item) => {
             TitleAll = item.category.name;
             html += /* html */
@@ -129,9 +129,9 @@ function getArticles(first) {
 
         articlesMain.innerHTML = html;
     })
-    .catch(function (err) {
-        window.location.href('index.html');
-    });
+        .catch(function (err) {
+            window.location.href('index.html');
+        });
 }
 
 function mergeAndPush(first) {

@@ -18,7 +18,7 @@ let first = parseInt(urlParams.get('page'));
 if (isNaN(first) === true) {
     first = 1;
 }
-first=1;
+// first=1;
 
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
@@ -59,6 +59,9 @@ function renderPagination(total,first) {
 }
 
 function getArticles(first) {
+    urlParams.set('page', first);
+    let newPageLink = window.location.pathname + "?" + urlParams.toString();
+    history.pushState(null, "", newPageLink);
     API.call().get(`articles/search?q=${keyword}&limit=5&page=${first}`).then(res => {
         let html='';
         const articles=res.data.data;
