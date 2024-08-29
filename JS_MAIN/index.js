@@ -74,7 +74,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                         <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
-                                <li><i class="flaticon-user"></i>by<a href="author.html">${author}</a></li>
+                                <li><i class="flaticon-user"></i><a href="author.html">${author}</a></li>
                                 <li><i class="flaticon-calendar"></i>${date}</li>
                                 <li><i class="flaticon-history"></i>${dayjs(date).fromNow()}</li>
                             </ul>
@@ -92,7 +92,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                     </div>
                     <div class="banner-post-content-two">
                         <a href="category.html?id=${item.category.id}" class="post-tag">${name}</a>
-                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${title}</a></h2>
+                        <h2 class="post-title"><a h ref="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-calendar"></i>${date}</li>
@@ -213,19 +213,18 @@ function renderCWATitle(item) {
 }
 
 function renderCWALargePostEven(item, category) {
-    return `<div class="col-54" id="bigPostRecent">
+    return/* html */ `<div class="col-54" id="bigPostRecent">
         <div class="overlay-post-two">
             <div class="overlay-post-thumb">
                 <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
             </div>
             <div class="overlay-post-content">
-                <a href="category.html?id=${item.id}" class="post-tag">News</a>
                 <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                 <div class="blog-post-meta white-blog-meta">
                     <ul class="list-wrap">
-                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
-                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                        <li><i class="flaticon-history"></i>20 Mins</li>
+                        <li><i class="flaticon-user"></i><a href="author.html">${item.author}</a></li>
+                        <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                        <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
                     </ul>
                 </div>
             </div>
@@ -243,11 +242,10 @@ function renderCWASmallPostsEven(items, category) {
                 <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
             </div>
             <div class="horizontal-post-content">
-                <a href="category.html?id=${item.id}" class="post-tag">Gadget</a>
                 <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
-                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
+                        <li><i class="flaticon-calendar"></i>${dayjs(item.publish_date).fromNow()}</li>
                     </ul>
                 </div>
             </div>
@@ -255,6 +253,8 @@ function renderCWASmallPostsEven(items, category) {
     });
     return html;
 }
+
+{/* <a href="category.html?id=${item.id}" class="post-tag">Gadget</a> */}
 
 function renderCWALargePostOdd(item, category) {
     const {description, id, thumb, title} = item;
@@ -265,19 +265,18 @@ function renderCWALargePostOdd(item, category) {
                 <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
             </div>
             <div class="trending-post-content">
-                <a href="category.html?id=${item.id}" class="post-tag">Technology</a>
                 <h2 class="post-title bold-underline"><a href="detail.html?id=${item.id}">${title}</a></h2>
                 <div class="blog-post-meta">
                     <ul class="list-wrap">
-                        <li><i class="flaticon-user"></i>by<a
-                                href="author.html">Admin</a></li>
-                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                        <li><i class="flaticon-history"></i>20 Mins</li>
+                        <li><i class="flaticon-user"></i><a
+                                href="author.html">${item.author}</a></li>
+                        <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                        <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
                     </ul>
                 </div>
                 <p>${description}</p>
                 <div class="view-all-btn">
-                    <a href="detail.html?id=${id}" class="link-btn">Read More
+                    <a href="detail.html?id=${id}" class="link-btn">Đọc thêm
                         <span class="svg-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"
                                 fill="none">
@@ -306,13 +305,12 @@ function renderCWASmallPostsOdd(items, category) {
             <div class="trending-post-two">
                 <div class="trending-post-thumb-two">
                     <a href="detail.html?id=${id}"><img src="${thumb}" alt="${title}"></a>
-                    <a href="category.html?id=${categoryId}" class="post-tag">${categoryName}</a>
                 </div>
                 <div class="trending-post-content-two">
                     <h2 class="post-title"><a href="detail.html?id=${id}">${title}</a></h2>
                     <div class="blog-post-meta">
                         <ul class="list-wrap">
-                            <li><i class="flaticon-user"></i>by<a
+                            <li><i class="flaticon-user"></i><a
                                     href="author.html">${author}</a></li>
                             <li><i class="flaticon-calendar"></i>${publish_date}</li>
                         </ul>
@@ -341,7 +339,7 @@ API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
                 <div class="row">
                     ${renderCWALargePostEven(largePost, item)}
                     <div class="col-46" id="smallPostRecent">
-                        ${renderCWASmallPostsEven(smallPosts, item)}
+                        ${renderCWASmallPostsEven(smallPosts,item)}
                     </div>
                 </div>
             </div>`
@@ -384,7 +382,7 @@ API.call().get('articles/popular?limit=4').then(function (res) {
                     </div>
                     <p>${item.description}</p>
                     <div class="view-all-btn">
-                        <a href="detail.html?id=${item.id}" class="link-btn">Read More
+                        <a href="detail.html?id=${item.id}" class="link-btn">Đọc thêm
                             <span class="svg-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
