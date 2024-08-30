@@ -9,11 +9,11 @@ const commentForm=document.getElementById('commentForm');
 const commentMessage=document.getElementById('commentMessage');
 const listComment=document.getElementById('listComment');
 const commentNotice=document.getElementById('commentNotice');
+const breadCrumbArea=document.getElementById('breadCrumbArea');
 // const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
 const parentCommentId=null;
 
 
-WrapperNewsletter.innerHTML=Newsletter(WrapperNewsletter);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
@@ -190,6 +190,9 @@ API.call().get(`articles/${id}`).then(function(res) {
     PreNexPosts.innerHTML=htmlPreNex;
     authorWrapper.innerHTML=htmlauthor;
     DetailWrapper.innerHTML=html;
+    breadCrumbArea.innerHTML=`<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="category.html">${item.category.name}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">${item.title}</li>`;
 });
 
 /// SHOW COMMENT ITEMS
