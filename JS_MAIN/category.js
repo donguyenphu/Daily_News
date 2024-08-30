@@ -101,7 +101,6 @@ function getArticles(first) {
                         <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
                     </div>
                     <div class="weekly-post-content">
-                        <a href="category.html" class="post-tag">${item.category.name}</a>
                         <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -111,7 +110,7 @@ function getArticles(first) {
                         </div>
                         <p>${item.description}</p>
                         <div class="view-all-btn">
-                            <a href="detail.html?id=${item.id}" class="link-btn">Read More
+                            <a href="detail.html?id=${item.id}" class="link-btn">Đọc thêm
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                         <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
