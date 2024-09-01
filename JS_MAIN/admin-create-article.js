@@ -1,5 +1,3 @@
-console.log(123);
-
 const thumb=document.getElementById('thumb');
 const title=document.getElementById('title');
 const createArticle=document.getElementById('createArticle');
@@ -46,7 +44,7 @@ AuthForm.addEventListener('submit', function(res) {
         title.value=description.value=content.value='';
         categoryId.value='Chọn danh mục';
         let errr=err.response.data.errors;
-        showErrorMessages(errr,formMessage);
+        // showErrorMessages(errr,formMessage);
     });
 })
 

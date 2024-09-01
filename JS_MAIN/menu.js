@@ -28,6 +28,7 @@ API.call().get('categories_news').then(function(res) {
                 <li><a href="change-password.html" id="change">Đổi mật khẩu</a></li>
                 <li><a href="admin-create-article.html" id="admin">Tạo bài viết mới</a></li>
                 <li><a href="admin-list-article.html" id="manage">Quản lí bài viết</a></li>
+                <li><a href="admin-update-article.html" id="update">Cập nhật bài viết</a></li>
                 <li><a href="login.html" id="btnLogOut">Đăng xuất</a></li>
             </ul> 
         </li>`;
@@ -61,16 +62,19 @@ menuFull.addEventListener('click', function(s) {
     else if (el.id === 'btnReg')  {
         window.location.href='register.html';
     }
-    else if (el.id==='change') {
+    else if (el.id ==='change') {
         window.location.href='change-password.html';
     }
-    else if (el.id==='admin') {
+    else if (el.id ==='admin') {
         window.location.href='admin-create-article.html';
     }
-    else if (el.id==='manage') {
+    else if (el.id ==='manage') {
         window.location.href='admin-list-article.html';
     }
-    else if (el.id==='profile') {
+    else if (el.id ==='profile') {
         window.location.href='profile.html';
+    }
+    else if (el.id ==='update') {
+        window.location.href='admin-update-article.html';
     }
 });
