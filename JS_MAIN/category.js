@@ -70,12 +70,12 @@ function renderPagination(total, first) {
     const disNex = (first === total + 1 ? 'pointer-events-none' : '');
     if (first === total + 1) first--;
     myPagination.innerHTML = '';
-    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev" href="#">Previous</a></li>`;
+    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
         let active = (index === first ? 'active pointer-events-none' : '');
         html += `<li class="page-item ${active}"><a class="page-link" href="#">${index}</a></li>`;
     }
-    html += `<li class="page-item ${disNex}"><a class="page-link-next" href="#">Next</a></li>`;
+    html += `<li class="page-item ${disNex}"><a class="page-link-next page-link" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
 

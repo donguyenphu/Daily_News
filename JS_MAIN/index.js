@@ -92,7 +92,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                     </div>
                     <div class="banner-post-content-two">
                         <a href="category.html?id=${item.category.id}" class="post-tag">${name}</a>
-                        <h2 class="post-title"><a h ref="detail.html?id=${item.id}">${title}</a></h2>
+                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${title}</a></h2>
                         <div class="blog-post-meta white-blog-meta">
                             <ul class="list-wrap">
                                 <li><i class="flaticon-calendar"></i>${date}</li>
@@ -195,7 +195,7 @@ function renderCWATitle(item) {
             <h2 class="title">${item.name}</h2>
         </div>
         <div class="view-all-btn">
-            <a href="category.html?id=${item.id}" class="link-btn">View All
+            <a href="category.html?id=${item.id}" class="link-btn">Xem thêm
                 <span class="svg-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                         <path
@@ -326,6 +326,8 @@ function renderCWASmallPostsOdd(items, category) {
 API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
     const data = res.data.data;
     let html = '';
+    console.log(data,329);
+    
     
     data.forEach((item, idx) => {
         const articles = item.articles; // 4

@@ -43,3 +43,8 @@ th {
     min-width: 40px;
     padding: 0 5px;
 }
+.RandomButtonCSS {
+    background-color:  #F4796C;
+    width: 100%;
+    display: block;
+}

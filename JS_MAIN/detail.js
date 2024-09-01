@@ -100,18 +100,10 @@ API.call().get(`articles/${id}`).then(function(res) {
     <div class="detail-thumb">
         <img src="${item.thumb}" alt="${item.title}">
     </div>
-   <p class="mt-3">${item.description}</p>
+    <div>
+        <p class="mt-3">${item.description}</p>
+    </div>
    <div>${item.content}</div>
-    <div class="detail-inner mt-5">
-        <p class="mb-4">Bài viết khác</p>
-        ${html3}
-    </div>
-    <div class="detail-video mt-5">
-        <a href="https://www.youtube.com/watch?v=sOG9tWUVq9M" class="paly-btn popup-video">
-            <img src="https://img.youtube.com/vi/sOG9tWUVq9M/hqdefault.jpg" alt="Youtbe Thumbnail" class="w-100">
-            <i class="fas fa-play"></i>
-        </a>
-    </div>
     <div class="detail-bottom">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -119,7 +111,7 @@ API.call().get(`articles/${id}`).then(function(res) {
                     <h5 class="title">Tags:</h5>
                     <ul class="list-wrap">
                         <li><a href="category.html">Art & Design</a></li>
-                        <li><a href="category.html">Video</a></li>
+                        <li><a href="category.ht                                                                                                                                                                                                                    ml">Video</a></li>
                     </ul>
                 </div>
             </div>
@@ -149,45 +141,6 @@ API.call().get(`articles/${id}`).then(function(res) {
             <p></p>
         </div>
     `;
-    let htmlPreNex='';
-    let thumb1='',thumb2='',title1='',title2='';
-    const preNum=id-1;
-    const nexNum=id+1;
-    API.call().get(`articles/${preNum}`).then(function(res1) {
-        const a1=res1.data.data;
-        thumb1=a1.thumb;
-        title1=a1.title;
-    });
-    API.call().get(`articles/${nexNum}`).then(function(res2) {
-        const a2=res2.data.data;
-        thumb2=a2.thumb;
-        title2=a2.title;
-    });
-    htmlPreNex+=`
-        <div class="col-md-6">
-            <div class="post-item">
-                <div class="thumb">
-                    <a href="detail.html"><img src="${thumb1}" alt="${title1}"></a>
-                </div>
-                <div class="content">
-                    <span>Previous Post</span>
-                    <h5 class="post-title"><a href="detail.html?id=${id-1}">${title1}</a></h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="post-item next-post">
-                <div class="thumb">
-                    <a href="detail.html"><img src="${thumb2}" alt="${title2}"></a>
-                </div>
-                <div class="content">
-                    <span>Next Post</span>
-                    <h5 class="post-title"><a href="detail.html?id=${id+1}">${title2}</a></h5>
-                </div>
-            </div>
-        </div>
-    `;
-    PreNexPosts.innerHTML=htmlPreNex;
     authorWrapper.innerHTML=htmlauthor;
     DetailWrapper.innerHTML=html;
     breadCrumbArea.innerHTML=`<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
