@@ -9,6 +9,14 @@ const AuthForm=document.getElementById('AuthForm');
 const formMessage=document.getElementById('formMessage');
 const randomThumb=document.getElementById('randomThumb');
 
+let editor;
+
+ClassicEditor.create(document.querySelector('#content')).then(newEditor => {
+    editor=newEditor;
+}).catch((error) => {
+    console.log('ERRORS');
+});
+
 createArticle.addEventListener('click', function() {
     API.call().get('https://api.unsplash.com/photos/random?client_id=AHiUgCs8fnituwR76TO7o0HRNABLlHP-N0pV50xEFC8&orientation=landscape').then(res => {
         console.log('RANDOM ANH THANH CONG');

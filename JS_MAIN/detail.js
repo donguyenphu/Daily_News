@@ -1,29 +1,69 @@
-console.log(123);
+// 1:30p comments
 let WrapperNewsletter=document.getElementById('WrapperNewsletter');
 let RecentPostWrapper=document.getElementById('RecentPostWrapper');
 let RecentTitle=document.getElementById('RecentTitle');
 let DetailWrapper=document.getElementById('DetailWrapper');
-const authorWrapper=document.getElementById('authorWrapper');
+let authorWrapper=document.getElementById('authorWrapper');
 const PreNexPosts=document.getElementById('PreNexPosts');
 const commentForm=document.getElementById('commentForm');
 const commentMessage=document.getElementById('commentMessage');
 const listComment=document.getElementById('listComment');
 const commentNotice=document.getElementById('commentNotice');
-const breadCrumbArea=document.getElementById('breadCrumbArea');
-// const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
-const parentCommentId=null;
+let breadCrumbArea=document.getElementById('breadCrumbArea');
+let totalComments=document.getElementById('totalComments');
+let commentContent=document.getElementById('commentContent');
+
+const queryString=window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id=urlParams.get('id');
+
+console.log(id);
 
 
 RecentPostsRender(RecentTitle,RecentPostWrapper);
-let queryString = window.location.search;
-let urlParams = new URLSearchParams(queryString);
-let id = parseInt(urlParams.get('id'));
 
 let emailUser='';
 let nameUser='';
 let COMMENTS=JSON.parse(localStorage.getItem('COMMENTS')) || [];
+console.log(COMMENTS);
+
+const parentCommentId=null;
+const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
 let html2='';
 let html3='';
+
+API.callWithToken().get('/auth/me').then((res) => {
+    emailUser=res.data.data.email;
+    nameUser=res.data.data.name;
+    commentForm.classList.remove('d-none');
+    commentNotice.classList.add('d-none');
+}).catch(err => {
+    commentForm.classList.add('d-none');
+    commentNotice.classList.remove('d-none');
+}).finally(decisionRender => {
+    // renderComment(thisArticleComment);
+});
+
+commentForm.addEventListener('submit', function(res) {
+    const val=commentContent.value.trim();
+    if (val) {
+        const objSave = {
+            id: self.crypto.randomUUID(),
+            email: emailUser,
+            content: val,
+            dateTime: dayjs().format('YYYY-MM-DD H:mm:ss'),
+            articleId: id,
+        }
+        COMMENTS.unshift(objSave);
+        thisArticleComment=COMMENTS.filter(item => item.articleId === id);
+        renderComment(COMMENTS);
+    }  
+    else {
+        alert('PLEASE FILL IN THE COMMENT AREA!');
+    }
+    commentContent.value='';
+});
+
 API.call().get('articles/popular?limit=1').then(function(res2) {
     let articles=res2.data.data;
     articles.forEach((item2) => {
@@ -55,7 +95,6 @@ API.call().get('articles/popular?limit=1').then(function(res2) {
         `;
     });
     html3=html2;
-    console.log('HTML2::::',html2);
 });
 
 /*
@@ -71,11 +110,7 @@ API.call().get('articles/popular?limit=1').then(function(res2) {
 API.call().get(`articles/${id}`).then(function(res) {
     const item=res.data.data;
     let html='';
-    html+=
-    
-    /* html */
-    `
-    <div class="detail-content-top">
+    html+=/* html */`<div class="detail-content-top">
         <a href="category.html" class="post-tag">${item.category.name}</a>
         <h2 class="title">${item.title}</h2>
         <div class="bd-content-inner">
@@ -97,8 +132,8 @@ API.call().get(`articles/${id}`).then(function(res) {
             </div>
         </div>
     </div>
-    <div class="detail-thumb">
-        <img src="${item.thumb}" alt="${item.title}">
+    <div class="detail-thumb text-align-center">
+        <img src="${item.thumb}" alt="${item.title}" class="w-100">
     </div>
     <div>
         <p class="mt-3">${item.description}</p>
@@ -111,7 +146,7 @@ API.call().get(`articles/${id}`).then(function(res) {
                     <h5 class="title">Tags:</h5>
                     <ul class="list-wrap">
                         <li><a href="category.html">Art & Design</a></li>
-                        <li><a href="category.ht                                                                                                                                                                                                                    ml">Video</a></li>
+                        <li><a href="category.html">Video</a></li>
                     </ul>
                 </div>
             </div>
@@ -167,7 +202,30 @@ bắt sự kiên click vào button post comment
 */
 
 function renderComment(COMMENTS) {
-
+    let html='';
+    let tmp=0;
+    COMMENTS.forEach((item) => {
+        if (item.articleId===id) {
+            tmp++;
+            html+=`<li>
+                        <div class="comments-box">
+                            <div class="comments-avatar">
+                                <img src="assets/img/images/comment01.png" alt="img">
+                            </div>
+                            <div class="comments-text">
+                                <div class="avatar-name">
+                                    <h6 class="name">${item.email}</h6>
+                                    <span class="date">${item.dateTime}</span>
+                                </div>
+                                <p>${item.content}</p>
+                                <a href="#" class="reply-btn">Reply</a>
+                            </div>
+                        </div>
+                    </li>`;
+        }
+        listComment.innerHTML=html;
+        totalComments.innerHTML=`<h3 class="comments-wrap-title" id="totalComments">${tmp} Comments</h3>`;
+    });
 }
 function renderCommentItem(data) {
 

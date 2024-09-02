@@ -28,7 +28,6 @@ API.call().get('categories_news').then(function(res) {
                 <li><a href="change-password.html" id="change">Đổi mật khẩu</a></li>
                 <li><a href="admin-create-article.html" id="admin">Tạo bài viết mới</a></li>
                 <li><a href="admin-list-article.html" id="manage">Quản lí bài viết</a></li>
-                <li><a href="admin-update-article.html" id="update">Cập nhật bài viết</a></li>
                 <li><a href="login.html" id="btnLogOut">Đăng xuất</a></li>
             </ul> 
         </li>`;
