@@ -17,7 +17,6 @@ const queryString=window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id=urlParams.get('id');
 
-console.log(id);
 
 
 RecentPostsRender(RecentTitle,RecentPostWrapper);
@@ -27,8 +26,8 @@ let nameUser='';
 let COMMENTS=JSON.parse(localStorage.getItem('COMMENTS')) || [];
 // console.log(COMMENTS);
 
-const parentCommentId=null;
-const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
+let parentCommentId=null;
+let thisArticleComment=COMMENTS.filter(item => item.articleId === id);
 let html2='';
 let html3='';
 
@@ -41,10 +40,11 @@ API.callWithToken().get('/auth/me').then((res) => {
     commentForm.classList.add('d-none');
     commentNotice.classList.remove('d-none');
 }).finally(decisionRender => {
-    // renderComment(thisArticleComment);
+    renderComment(COMMENTS);
 });
 
 commentForm.addEventListener('submit', function(res) {
+    res.preventDefault();
     const val=commentContent.value.trim();
     if (val) {
         const objSave = {
@@ -57,7 +57,7 @@ commentForm.addEventListener('submit', function(res) {
         COMMENTS.unshift(objSave);
         localStorage.setItem('COMMENTS', JSON.stringify(COMMENTS));
         thisArticleComment=COMMENTS.filter(item => item.articleId === id);
-        renderComment(COMMENTS);
+        renderComment(thisArticleComment);
     }  
     else {
         alert('PLEASE FILL IN THE COMMENT AREA!');
@@ -205,32 +205,34 @@ bắt sự kiên click vào button post comment
 function renderComment(COMMENTS) {
     let html='';
     let tmp=0;
+    console.log('COMMENTS:',COMMENTS);
+    
     COMMENTS.forEach((item) => {
         if (item.articleId===id) {
             tmp++;
             html+=`<li>
-                        <div class="comments-box">
-                            <div class="comments-avatar">
-                                <img src="assets/img/images/comment01.png" alt="img">
-                            </div>
-                            <div class="comments-text">
-                                <div class="avatar-name">
-                                    <h6 class="name">${item.email}</h6>
-                                    <span class="date">${item.dateTime}</span>
-                                </div>
-                                <p>${item.content}</p>
-                                <a href="#" class="reply-btn">Reply</a>
-                            </div>
+                    <div class="comments-box">
+                        <div class="comments-avatar">
+                            <img src="assets/img/images/comment01.png" alt="img">
                         </div>
-                    </li>`;
+                        <div class="comments-text">
+                            <div class="avatar-name gap-4">
+                                <h6 class="name">${item.email}</h6>
+                                <span class="date">${item.dateTime}</span>
+                            </div>
+                            <p>${item.content}</p>
+                            <a href="#" class="reply-btn">Reply</a>
+                        </div>
+                    </div>
+                </li>`;
         }
         listComment.innerHTML=html;
         totalComments.innerHTML=`<h3 class="comments-wrap-title" id="totalComments">${tmp} Comments</h3>`;
     });
 }
-function renderCommentItem(data) {
+// function renderCommentItem(data) {
 
-}
-function renderCommentChildItem(data) {
+// }
+// function renderCommentChildItem(data) {
 
-}
+// }

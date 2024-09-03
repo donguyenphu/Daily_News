@@ -26,11 +26,9 @@ API.call().get(`articles/${id}`).then(function(res) {
     console.log(item);
     title.value=item.title;
     description.value=item.description;
-    // thumb.value=item.thumb;
     thumbPreview.src=item.thumb;
     categoryId.value=item.category_id;
     editor.setData(item.content);
-    // editor.setData(item.description);
 });
 
 let editor;
@@ -64,24 +62,14 @@ AuthForm.addEventListener('submit', function (e) {
     let formData = new FormData(AuthForm);
     let datac = Object.fromEntries(formData);
     API.callWithToken().put(`/articles/${id}`,datac).then(res2 => {
-        console.log(123);
-        
         toastMessage('SUCCESS');
-        // window.location.href='admin-list-article.html';
+        window.location.href='admin-list-article.html';
     }).catch(err => {
-        console.log('CANT UPDATE');
+        toastMessage('CANT UPDATE');
     })
 });
 
 
-/**
- * cái lỗi như thế này
- * khi mình random
- * ảnh sẽ xuất hiện
- * trc khi xhien, sẽ xảy ra sự kiện submit
- * trong khi button random không đặt submit???
- * thì hệ thống tự lưu ảnh cũ vào rồi về list
- */
 
 
 
