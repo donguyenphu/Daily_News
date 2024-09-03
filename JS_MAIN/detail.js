@@ -25,7 +25,7 @@ RecentPostsRender(RecentTitle,RecentPostWrapper);
 let emailUser='';
 let nameUser='';
 let COMMENTS=JSON.parse(localStorage.getItem('COMMENTS')) || [];
-console.log(COMMENTS);
+// console.log(COMMENTS);
 
 const parentCommentId=null;
 const thisArticleComment=COMMENTS.filter(item => item.articleId === id);
@@ -55,6 +55,7 @@ commentForm.addEventListener('submit', function(res) {
             articleId: id,
         }
         COMMENTS.unshift(objSave);
+        localStorage.setItem('COMMENTS', JSON.stringify(COMMENTS));
         thisArticleComment=COMMENTS.filter(item => item.articleId === id);
         renderComment(COMMENTS);
     }  

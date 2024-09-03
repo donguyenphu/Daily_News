@@ -26,7 +26,7 @@ API.call().get(`articles/${id}`).then(function(res) {
     console.log(item);
     title.value=item.title;
     description.value=item.description;
-    thumb.value=item.thumb;
+    // thumb.value=item.thumb;
     thumbPreview.src=item.thumb;
     categoryId.value=item.category_id;
     editor.setData(item.content);
@@ -42,6 +42,7 @@ ClassicEditor.create(document.querySelector('#content')).then(newEditor => {
 });
 
 createArticle.addEventListener('click', function() {
+    thumb.value='';
     API.call().get('https://api.unsplash.com/photos/random?client_id=AHiUgCs8fnituwR76TO7o0HRNABLlHP-N0pV50xEFC8&orientation=landscape').then(res => {
         toastMessage('RANDOM ANH THANH CONG');
         const urll=res.data.urls.regular;
