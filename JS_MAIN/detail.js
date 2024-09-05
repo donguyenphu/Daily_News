@@ -30,7 +30,7 @@ let parentCommentId=null;
 let thisArticleComment=COMMENTS.filter(item => item.articleId === id);
 let html2='';
 let html3='';
-
+let tmp=0;   
 API.callWithToken().get('/auth/me').then((res) => {
     emailUser=res.data.data.email;
     nameUser=res.data.data.name;
@@ -119,7 +119,7 @@ API.call().get(`articles/${id}`).then(function(res) {
                 <ul class="list-wrap">
                     <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
                     <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                    <li><i class="flaticon-chat"></i><a href="detail.html">05 Comments</a></li>
+                    <li><i class="flaticon-chat"></i><a href="detail.html?${id}">tmp Comments</a></li>
                     <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
                 </ul>
             </div>
@@ -204,9 +204,7 @@ bắt sự kiên click vào button post comment
 
 function renderComment(COMMENTS) {
     let html='';
-    let tmp=0;
-    console.log('COMMENTS:',COMMENTS);
-    
+    tmp=0;
     COMMENTS.forEach((item) => {
         if (item.articleId===id) {
             tmp++;
@@ -236,3 +234,6 @@ function renderComment(COMMENTS) {
 // function renderCommentChildItem(data) {
 
 // }
+
+
+///https://codeforces.com/contest/1921/problem/F
