@@ -8,7 +8,7 @@ let myPagination = document.getElementById('myPagination');
 let overCategoryName = document.getElementById('overCategoryName');
 let RecentTitle = document.getElementById('RecentTitle');
 let RecentPostWrapper = document.getElementById('RecentPostWrapper');
-const WrapperNewsletter = document.getElementById('WrapperNewsletter');
+let WrapperNewsletter = document.getElementById('WrapperNewsletter');
 /// thầy xem giúp em với thầy
 // ủa anh thấy page 1 mà em
 /// thầy đợi e chút thầy
@@ -31,13 +31,16 @@ const WrapperNewsletter = document.getElementById('WrapperNewsletter');
 ///////////////////////// =)
 /// e làm được rồi thầy ơiii
 let first = parseInt(urlParams.get('page'));
+// console.log('PAGES:',first);
 if (isNaN(first) === true) {
     first = 1;
 }
-first = 1;
 if (isNaN(parseInt(id))) {
-    window.location.href = "index.html";
+    window.location.href = "index.html"; /// thong tin trang ko hop le
 }
+// first=1;
+console.log('FIRST PAGE:',first);
+
 
 
 
@@ -53,12 +56,18 @@ myPagination.addEventListener('click', function (e) {
         first = parseInt(el.innerText);
         getArticles(first);
     }
-    if (el.classList.contains('page-link-prev') === true) {
+    if (el.classList.contains('page-link-prev')) {
+        // if (first > 1) {
+        first=parseInt(first);
         first--;
+        console.log('PREV:',first);
+        
         getArticles(first);
+        // }
     }
-    if (el.classList.contains('page-link-next') === true) {
+    if (el.classList.contains('page-link-next')) {
         // getArticles(first);
+        first=parseInt(first);
         first++;
         getArticles(first);
     }
@@ -69,7 +78,6 @@ function renderPagination(total, first) {
     if (first === 0) first++;
     const disNex = (first === total + 1 ? 'pointer-events-none' : '');
     if (first === total + 1) first--;
-    myPagination.innerHTML = '';
     let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
         let active = (index === first ? 'active pointer-events-none' : '');
@@ -78,14 +86,17 @@ function renderPagination(total, first) {
     html += `<li class="page-item ${disNex}"><a class="page-link-next page-link" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
-
+//// first bi NAN
 function getArticles(first) {
+    if (isNaN(first)) {
+        console.log('Is NaN');
+    }
     API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res => {
         const articles = res.data.data;
         let html = '';
         let totalPages = res.data.meta.total;
         if (first >= 1 && first <= totalPages) {
-            console.log(first);
+            // console.log(first);
             urlParams.set('page', first);
             let newPageLink = window.location.pathname + "?" + urlParams.toString();
             history.pushState(null, "", newPageLink);
@@ -94,50 +105,47 @@ function getArticles(first) {
         renderPagination(totalPages, first);
         articles.forEach((item) => {
             TitleAll = item.category.name;
-            html += /* html */
-                `
-                <div class="weekly-post-item weekly-post-four">
-                    <div class="weekly-post-thumb">
-                        <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
+            html += /* html */`<div class="weekly-post-item weekly-post-four">
+                <div class="weekly-post-thumb">
+                    <a href="detail.html?id=${item.id}"><img src="${item.thumb}" alt="${item.title}"></a>
+                </div>
+                <div class="weekly-post-content">
+                    <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
+                    <div class="blog-post-meta">
+                        <ul class="list-wrap">
+                            <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
+                            <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
+                        </ul>
                     </div>
-                    <div class="weekly-post-content">
-                        <h2 class="post-title"><a href="detail.html?id=${item.id}">${item.title}</a></h2>
-                        <div class="blog-post-meta">
-                            <ul class="list-wrap">
-                                <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                                <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
-                            </ul>
-                        </div>
-                        <p>${item.description}</p>
-                        <div class="view-all-btn">
-                            <a href="detail.html?id=${item.id}" class="link-btn">Đọc thêm
-                                <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
-                                        <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
-                                        <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
+                    <p>${item.description}</p>
+                    <div class="view-all-btn">
+                        <a href="detail.html?id=${item.id}" class="link-btn">Đọc thêm
+                            <span class="svg-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+                                    <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
+                                    <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                        </a>
                     </div>
                 </div>
-            `;
+            </div>`;
         });
 
         overCategoryName.innerText = TitleAll;
 
         articlesMain.innerHTML = html;
     })
-        .catch(function (err) {
-            window.location.href('index.html');
-        });
+    .catch(function (err) {
+        window.location.href('index.html');
+    });
 }
 
-function mergeAndPush(first) {
-    urlParams.set('page', first);
-    let newPageLink = window.location.pathname + "?" + urlParams.toString();
-    history.pushState(null, "", newPageLink);
-    getArticles(first);
-}
+// function mergeAndPush(first) {
+//     urlParams.set('page', first);
+//     let newPageLink = window.location.pathname + "?" + urlParams.toString();
+//     history.pushState(null, "", newPageLink);
+//     getArticles(first);
+// }
 
 

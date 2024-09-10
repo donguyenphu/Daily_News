@@ -47,7 +47,7 @@ API.call().get('categories_news').then(function(res) {
 });
 
 menuFull.addEventListener('click', function(s) {
-    s.preventDefault();
+   
     let el=s.target;
     if (el.id ==='btnLogOut') {
         localStorage.removeItem(ACCESS_TOKEN); 

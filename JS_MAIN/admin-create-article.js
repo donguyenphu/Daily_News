@@ -18,6 +18,7 @@ ClassicEditor.create(document.querySelector('#content')).then(newEditor => {
 });
 
 createArticle.addEventListener('click', function() {
+    thumbPreview.src='';
     API.call().get('https://api.unsplash.com/photos/random?client_id=AHiUgCs8fnituwR76TO7o0HRNABLlHP-N0pV50xEFC8&orientation=landscape').then(res => {
         console.log('RANDOM ANH THANH CONG');
         let url=res.data.urls.regular;

@@ -571,7 +571,7 @@ function SubFollow(SubscribeFollowers) {
     SubscribeFollowers.innerHTML =
         `   
         <div class="widget-title mb-30">
-            <h6 class="title">Người truy cập</h6>
+            <h6 class="title">Mạng xã hội</h6>
             <div class="section-title-line"></div>
         </div>
         <div class="sidebar-social-wrap">
