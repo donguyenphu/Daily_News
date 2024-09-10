@@ -24,7 +24,6 @@ RecentPostsRender(RecentTitle,RecentPostWrapper);
 let emailUser='';
 let nameUser='';
 let COMMENTS=JSON.parse(localStorage.getItem('COMMENTS')) || [];
-// console.log(COMMENTS);
 
 let parentCommentId=null;
 let thisArticleComment=COMMENTS.filter(item => item.articleId === id);
@@ -119,11 +118,11 @@ API.call().get(`articles/${id}`).then(function(res) {
                 <ul class="list-wrap">
                     <li><i class="flaticon-user"></i>by<a href="author.html">${item.author}</a></li>
                     <li><i class="flaticon-calendar"></i>${item.publish_date}</li>
-                    <li><i class="flaticon-chat"></i><a href="detail.html?${id}">tmp Comments</a></li>
+                    <li><i class="flaticon-chat"></i><a href="detail.html?${id}">${tmp}  Comments</a></li>
                     <li><i class="flaticon-history"></i>${dayjs(item.publish_date).fromNow()}</li>
                 </ul>
             </div>
-            <div class="detail-social">
+            <div class="blog-details-social">
                 <ul class="list-wrap">
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -140,31 +139,31 @@ API.call().get(`articles/${id}`).then(function(res) {
         <p class="mt-3">${item.description}</p>
     </div>
    <div>${item.content}</div>
-    <div class="detail-bottom">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="post-tags">
-                    <h5 class="title">Tags:</h5>
-                    <ul class="list-wrap">
-                        <li><a href="category.html">Art & Design</a></li>
-                        <li><a href="category.html">Video</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="post-share">
-                    <h5 class="title">Share:</h5>
-                    <ul class="list-wrap">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+   <div class="blog-details-bottom">
+   <div class="row align-items-center">
+       <div class="col-lg-6">
+           <div class="post-tags">
+               <h5 class="title">Tags:</h5>
+               <ul class="list-wrap">
+                   <li><a href="category.html?id=${item.category.id}">${item.category.name}</a></li>
+                   <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Video</a></li>
+               </ul>
+           </div>
+       </div>
+       <div class="col-lg-6">
+           <div class="post-share">
+               <h5 class="title">Share:</h5>
+               <ul class="list-wrap">
+                   <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                   <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                   <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                   <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                   <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+               </ul>
+           </div>
+       </div>
+   </div>
+</div>
     `;
     let htmlauthor='';
     htmlauthor+=`
