@@ -23,7 +23,7 @@ AuthForm.addEventListener('submit' ,function(event) {
         toastMessage('SUCCESS-CHANGE-PASSWORD');
     }).catch(err => {
         //  const errors=err.response.data.errors;
-        // showErrorMessages(errors,formMessage);
+        showErrorMessages(errors,formMessage);
         console.log(111111);
         
     });

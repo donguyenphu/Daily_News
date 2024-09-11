@@ -124,8 +124,8 @@ AuthForm.addEventListener('submit', function(event) { /// no errors
         });
     }).catch(function(err) {
         toastMessage('DANG KY KHONG THANH CONG');
-        const errors=err.response.data.errors;
-        showErrorMessages(errors,formMessage);
+        // const errors=err.response.data.errors;
+        // showErrorMessages(errors,formMessage);
     });
 });
 

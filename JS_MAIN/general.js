@@ -39,7 +39,7 @@ function showErrorMessages(errors,el) {
     let errString='';
     for (let property in errors) {
         errString+=/* html */ `<li>${errors[property]}</li>`;
-        // console.log(`${property}: ${errors[property]}`);
+        console.log(`${property}: ${errors[property]}`);
     }
     el.innerHTML= /* html */
     `<div class="alert alert-danger" role="alert">
