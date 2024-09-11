@@ -20,7 +20,7 @@ AuthForm.addEventListener('submit' ,function(event) {
         oldPassword.value='';
         newPassword.value='';
         confirmPassword.value='';
-        alert('SUCCESS-CHANGE-PASSWORD');
+        toastMessage('SUCCESS-CHANGE-PASSWORD');
     }).catch(err => {
         //  const errors=err.response.data.errors;
         // showErrorMessages(errors,formMessage);

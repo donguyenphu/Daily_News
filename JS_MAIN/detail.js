@@ -59,7 +59,7 @@ commentForm.addEventListener('submit', function(res) {
         renderComment(thisArticleComment);
     }  
     else {
-        alert('PLEASE FILL IN THE COMMENT AREA!');
+        toastMessage('PLEASE FILL IN THE COMMENT AREA!');
     }
     commentContent.value='';
 });

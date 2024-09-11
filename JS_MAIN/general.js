@@ -30,7 +30,7 @@ searchForm.addEventListener('submit', function(res) {
         window.location.href=`search.html?keyword=${word}`;
     }
     else {
-        alert('Khong hop le!');
+        toastMessage('Khong hop le!');
         inpSearch.value='';
     }
 });

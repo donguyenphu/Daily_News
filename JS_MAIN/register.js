@@ -89,11 +89,6 @@ const formMessage=document.getElementById('formMessage');
 
 
 
-
-console.log('AUTHFORM:',AuthForm);
-
-
-
 // console.log('NOW:',RegisterWrapper.innerHTML);
 
 /**
@@ -116,22 +111,19 @@ AuthForm.addEventListener('submit', function(event) { /// no errors
         password:password.value,
         phone:phone.value,
         address:address.value
-    }
-    // console.log('DATA:',data);
-    
+    }   
     API.call().post('users/register',data).then(function(ress) {
         const Log={
             email:data.email,
             password:data.password
-        }
-        // localStorage.setItem(checkElm,Log);
-        
+        }  
         API.call().post('auth/login',Log).then(function(ress) {
             localStorage.removeItem(ACCESS_TOKEN);
             localStorage.setItem(ACCESS_TOKEN,ress.data.access_token);
             window.location.href='index.html';
         });
     }).catch(function(err) {
+        toastMessage('DANG KY KHONG THANH CONG');
         const errors=err.response.data.errors;
         showErrorMessages(errors,formMessage);
     });

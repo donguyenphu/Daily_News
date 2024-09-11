@@ -60,7 +60,6 @@ myPagination.addEventListener('click', function (e) {
         // if (first > 1) {
         first=parseInt(first);
         first--;
-        console.log('PREV:',first);
         
         getArticles(first);
         // }
@@ -131,9 +130,7 @@ function getArticles(first) {
                 </div>
             </div>`;
         });
-
         overCategoryName.innerText = TitleAll;
-
         articlesMain.innerHTML = html;
     })
     .catch(function (err) {
