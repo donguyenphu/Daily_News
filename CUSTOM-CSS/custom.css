@@ -14,7 +14,10 @@ table {
     border-spacing: 20px 10px; /* 20px horizontal, 10px vertical spacing */
     width: 100%;
 }
-
+mark {
+    padding: 0px;
+    background-color: gold;
+}
 th, td {
     padding: 10px; /* Adjust padding to increase space within each cell */
     text-align: left;

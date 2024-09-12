@@ -38,8 +38,6 @@ if (isNaN(first) === true) {
 if (isNaN(parseInt(id))) {
     window.location.href = "index.html"; /// thong tin trang ko hop le
 }
-// first=1;
-console.log('FIRST PAGE:',first);
 
 
 
@@ -57,15 +55,11 @@ myPagination.addEventListener('click', function (e) {
         getArticles(first);
     }
     if (el.classList.contains('page-link-prev')) {
-        // if (first > 1) {
         first=parseInt(first);
         first--;
-        
         getArticles(first);
-        // }
     }
     if (el.classList.contains('page-link-next')) {
-        // getArticles(first);
         first=parseInt(first);
         first++;
         getArticles(first);
@@ -87,15 +81,11 @@ function renderPagination(total, first) {
 }
 //// first bi NAN
 function getArticles(first) {
-    if (isNaN(first)) {
-        console.log('Is NaN');
-    }
     API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res => {
         const articles = res.data.data;
         let html = '';
         let totalPages = res.data.meta.total;
         if (first >= 1 && first <= totalPages) {
-            // console.log(first);
             urlParams.set('page', first);
             let newPageLink = window.location.pathname + "?" + urlParams.toString();
             history.pushState(null, "", newPageLink);
