@@ -32,5 +32,8 @@ AuthForm.addEventListener('submit', function(res) {
         //     Cập nhật thông tin thành công
         // </div>`;
         toastMessage('SUCCESS UPDATE');
+    }).catch(err => {
+        const errors=err.response.data.errors;
+        showErrorMessages(errors,formMessage);
     });
 });

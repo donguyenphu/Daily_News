@@ -27,6 +27,7 @@ API.call().get(`articles/${id}`).then(function(res) {
     title.value=item.title;
     description.value=item.description;
     thumbPreview.src=item.thumb;
+    thumb.value=item.thumb
     categoryId.value=item.category_id;
     editor.setData(item.content);
 });

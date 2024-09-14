@@ -41,7 +41,8 @@ article.addEventListener('click', function(ev) {
     const el=ev.target;
     if (el.classList.contains('delete-article')) {
         API.callWithToken().delete(`/articles/${el.dataset.id}`).then((res) => {
-            toastMessage('SUCCESS DELETE');
+            // toastMessage('SUCCESS DELETE');
+            window.location.reload();
         })
     }
 });

@@ -9,6 +9,7 @@ let overCategoryName = document.getElementById('overCategoryName');
 let RecentTitle = document.getElementById('RecentTitle');
 let RecentPostWrapper = document.getElementById('RecentPostWrapper');
 let WrapperNewsletter = document.getElementById('WrapperNewsletter');
+let elSiteTitle = document.querySelector('title');
 /// thầy xem giúp em với thầy
 // ủa anh thấy page 1 mà em
 /// thầy đợi e chút thầy
@@ -55,28 +56,24 @@ myPagination.addEventListener('click', function (e) {
         getArticles(first);
     }
     if (el.classList.contains('page-link-prev')) {
-        first=parseInt(first);
         first--;
         getArticles(first);
     }
     if (el.classList.contains('page-link-next')) {
-        first=parseInt(first);
         first++;
         getArticles(first);
     }
 });
 
-function renderPagination(total, first) {
-    const disPrev = (first === 0 ? 'pointer-events-none' : '');
-    if (first === 0) first++;
-    const disNex = (first === total + 1 ? 'pointer-events-none' : '');
-    if (first === total + 1) first--;
-    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link" href="#">Previous</a></li>`;
+function renderPagination(total, currentPage) {
+    const disPrev = (currentPage === 1 ? 'pointer-events-none' : '');
+    const disNex = (currentPage === total ? 'pointer-events-none' : '');
+    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link ${disPrev}" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
-        let active = (index === first ? 'active pointer-events-none' : '');
-        html += `<li class="page-item ${active}"><a class="page-link number-link" href="#">${index}</a></li>`;
+        let active = (index === currentPage ? 'active pointer-events-none' : '');
+        html += `<li class="page-item ${active}"><a class="page-link number-link ${active}" href="#">${index}</a></li>`;
     }
-    html += `<li class="page-item ${disNex}"><a class="page-link-next page-link" href="#">Next</a></li>`;
+    html += `<li class="page-item ${disNex}"><a class="page-link-next page-link ${disNex}" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
 //// first bi NAN
@@ -121,11 +118,12 @@ function getArticles(first) {
             </div>`;
         });
         overCategoryName.innerText = TitleAll;
+        elSiteTitle.innerText = TitleAll
         articlesMain.innerHTML = html;
     })
-    .catch(function (err) {
-        window.location.href('index.html');
-    });
+        .catch(function (err) {
+            window.location.href('index.html');
+        });
 }
 
 // function mergeAndPush(first) {

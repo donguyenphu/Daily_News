@@ -36,36 +36,29 @@ myPagination.addEventListener('click', function (e) {
         getArticles(first);
     }
     if (el.classList.contains('page-link-prev')) {
-        first=parseInt(first);
         first--;
         getArticles(first);
     }
     if (el.classList.contains('page-link-next')) {
-        first=parseInt(first);
         first++;
         getArticles(first);
     }
 });
 
-function renderPagination(total, first) {
-    let disPrev = (first <=  0 ? 'pointer-events-none' : '');
-    if (first <= 0) first=Math.max(first,1);
-    let disNex = (first >= total + 1 ? 'pointer-events-none' : '');
-    if (first >= total + 1) first=Math.min(first,total);
-    console.log('RENDER',first);
-    
-    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link" href="#">Previous</a></li>`;
+function renderPagination(total, currentPage) {
+    const disPrev = (currentPage === 1 ? 'pointer-events-none' : '');
+    const disNex = (currentPage === total ? 'pointer-events-none' : '');
+    let html = `<li class="page-item ${disPrev}"><a class="page-link-prev page-link ${disPrev}" href="#">Previous</a></li>`;
     for (let index = 1; index <= total; index++) {
-        let active = (index === first ? 'active pointer-events-none' : '');
-        html += `<li class="page-item ${active}"><a class="page-link number-link" href="#">${index}</a></li>`;
+        let active = (index === currentPage ? 'active pointer-events-none' : '');
+        html += `<li class="page-item ${active}"><a class="page-link number-link ${active}" href="#">${index}</a></li>`;
     }
-    html += `<li class="page-item ${disNex}"><a class="page-link-next page-link" href="#">Next</a></li>`;
+    html += `<li class="page-item ${disNex}"><a class="page-link-next page-link ${disNex}" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
 
 function getArticles(first) {
     API.call().get(`articles/search?q=${keyword}&limit=5&page=${first}`).then(res => {
-        console.log('CURRENT PAGES NOW:',first);
         
         const Pages=res.data.meta.last_page;
         const totalPost=res.data.meta.total;
