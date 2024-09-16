@@ -12,7 +12,7 @@ API.callWithToken().get('/auth/me').then(res => {
     Name.value=data.name;
     phone.value=data.phone;
     address.value=data.address;
-    queryProfile.innerHTML=data.name;
+    queryProfile.innerHTML=`Thông tin tài khoản của ${data.name}`;
 }).catch(err => {
     window.location.href='index.html';
 });
