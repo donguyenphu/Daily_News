@@ -1,4 +1,3 @@
-console.log(123);
 
 API.callWithToken().get('/auth/me').then((res) => {
 

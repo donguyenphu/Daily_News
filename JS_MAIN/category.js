@@ -10,38 +10,16 @@ let RecentTitle = document.getElementById('RecentTitle');
 let RecentPostWrapper = document.getElementById('RecentPostWrapper');
 let WrapperNewsletter = document.getElementById('WrapperNewsletter');
 let elSiteTitle = document.querySelector('title');
-/// thầy xem giúp em với thầy
-// ủa anh thấy page 1 mà em
-/// thầy đợi e chút thầy
-/// e xem còn bug nào ko fix luôn thầy
-/// e load lại lại = 3 thầy
-// là đang bị gì em
-/// thầy check giúp e với ạ
-// anh chưa hiểu đang bị gì
-// có thấy lỗi gì đâu
-// show lỗi đi em
-// url có tham số page=3 đại diện cho đang ở trang số 3, thì em load lại nó ở tragn số 3 là đúng rồi em, chứ có gì sai đâu, giờ chuenr qua trang 4 đi load lại nó cũng sẽ là 4 thôi, thử vào các trang báo xem
-/// chắc phải reset về 1 hả thầy
-// sao menu chỗ category k gán link gì hết vậy em
-/// e quên thầy ạ, thầy đợi e chút ạ
-/// bắt sk vào <a> với <li> nó khác như thế nào ấy thầy
-// anh dã ví dụ dĩa cơm với miếng thịt heo rổi mà
-// sao giờ hỏi lại này 
-// sửa nhiêu đó thôi, anh nhắc nhiều lần bắt sự kiện vào thẻ a rồi, bên dưới em vẫn bắt class page-item là thẻ li
-/// em cảm ơn thầy ạ
-///////////////////////// =)
-/// e làm được rồi thầy ơiii
 let first = parseInt(urlParams.get('page'));
-// console.log('PAGES:',first);
 if (isNaN(first) === true) {
     first = 1;
 }
 if (isNaN(parseInt(id))) {
-    window.location.href = "index.html"; /// thong tin trang ko hop le
+    window.location.href = "index.html";
 }
 
 
-
+elSiteTitle.innerHTML=`${categoryArray[parseInt(id)]}`;
 
 getArticles(first);
 RecentPostsRender(RecentTitle, RecentPostWrapper);
@@ -76,7 +54,6 @@ function renderPagination(total, currentPage) {
     html += `<li class="page-item ${disNex}"><a class="page-link-next page-link ${disNex}" href="#">Next</a></li>`;
     myPagination.innerHTML = html;
 }
-//// first bi NAN
 function getArticles(first) {
     API.call().get(`categories_news/${id}/articles?limit=5&page=${first}`).then(res => {
         const articles = res.data.data;
@@ -126,11 +103,5 @@ function getArticles(first) {
         });
 }
 
-// function mergeAndPush(first) {
-//     urlParams.set('page', first);
-//     let newPageLink = window.location.pathname + "?" + urlParams.toString();
-//     history.pushState(null, "", newPageLink);
-//     getArticles(first);
-// }
 
 

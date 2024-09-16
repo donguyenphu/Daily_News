@@ -1,7 +1,6 @@
-console.log(1231231231231123);
+
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
-// TIME
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 const keyword=urlParams.get('keyword');
@@ -21,7 +20,6 @@ if (isNaN(first) === true) {
 if (isNaN(parseInt(first))===true) {
     window.href.location('index.html');
 }
-// first=1;
 
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);

@@ -1,4 +1,3 @@
-console.log(123);
 
 const oldPassword=document.getElementById('oldPassword');
 const newPassword=document.getElementById('newPassword');
@@ -22,7 +21,6 @@ AuthForm.addEventListener('submit' ,function(event) {
         confirmPassword.value='';
         toastMessage('SUCCESS-CHANGE-PASSWORD');
     }).catch(err => {
-        //  const errors=err.response.data.errors;
         showErrorMessages(errors,formMessage);
         console.log(111111);
         

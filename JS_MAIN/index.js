@@ -432,8 +432,6 @@ API.call().get('articles/popular?limit=5').then(function (res) {
     fullHotPosts.innerHTML = html;
 });
 
-/// ANOTHER POPULAR
-
 API.call().get('articles/popular?limit=4').then(function (res) {
     let html = `<div class="widget-title mb-30">
                 <h6 class="title" id="AnotherPopular">Tin phổ biến</h6>
@@ -465,12 +463,10 @@ API.call().get('articles/popular?limit=4').then(function (res) {
     fullAnotherPopular.innerHTML = html;
 });
 
-/// SubmitFormProcess
 
 
 SubFollow(SubscribeFollowers);
 
-// fullScrollRightPosts
 
 API.call().get('articles/popular?limit=10').then(function (res) {
     let articles = res.data.data;
@@ -559,13 +555,6 @@ API.call().get('articles/popular?limit=1').then(function (res) {
 });
 
 
-
-
-/// RENDER FOORTER
-
-
-
-/// SubscribeFollowers
 
 function SubFollow(SubscribeFollowers) {
     SubscribeFollowers.innerHTML =

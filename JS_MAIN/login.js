@@ -36,10 +36,7 @@ AuthForm.addEventListener('submit', function (res) {
         window.location.href='index.html';
     })
     .catch(function(err) {
-        // toastMessage('THONG TIN DANG NHAP KHONG HOP LE');
         formMessage.innerHTML=`<div class="alert alert-danger" role="alert">THONG TIN KHONG HOP LE!</div>`;
-        // const errors=err.response.data.errors;
-        // showErrorMessages(errors,formMessage);
         email.value='';
         password.value='';
     });

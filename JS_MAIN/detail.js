@@ -12,7 +12,7 @@ const commentNotice=document.getElementById('commentNotice');
 let breadCrumbArea=document.getElementById('breadCrumbArea');
 let totalComments=document.getElementById('totalComments');
 let commentContent=document.getElementById('commentContent');
-
+let queryDetail=document.querySelector('title');
 const queryString=window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id=urlParams.get('id');
@@ -163,8 +163,8 @@ API.call().get(`articles/${id}`).then(function(res) {
            </div>
        </div>
    </div>
-</div>
-    `;
+</div>`;
+    queryDetail.innerHTML=item.title;
     let htmlauthor='';
     htmlauthor+=`
         <div class="blog-avatar-img">
@@ -183,23 +183,6 @@ API.call().get(`articles/${id}`).then(function(res) {
                             <li class="breadcrumb-item active" aria-current="page">${item.title}</li>`;
 });
 
-/// SHOW COMMENT ITEMS
-
-/*
-bắt sự kiên click vào button post comment
-    - lấy nội dung bình luận từ textarea
-    - Tạo ra bình luận (object)
-        {
-            id: self.crypto.randomUUID(),
-            email: email cua user đang đăng nhập,
-            content,
-            dateTime: thời gian hiện tại,
-            articleId: id
-        }
-    - Thêm comment mới vào mảng COMMENTS
-    - filter lại comment thuộc về bài viết đang xem -> có thể bổ sung sau
-    - Hiển thị danh sách commnent 
-*/
 
 function renderComment(COMMENTS) {
     let html='';
@@ -227,12 +210,3 @@ function renderComment(COMMENTS) {
         totalComments.innerHTML=`<h3 class="comments-wrap-title" id="totalComments">${tmp} Comments</h3>`;
     });
 }
-// function renderCommentItem(data) {
-
-// }
-// function renderCommentChildItem(data) {
-
-// }
-
-
-///https://codeforces.com/contest/1921/problem/F

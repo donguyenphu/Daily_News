@@ -8,8 +8,10 @@ const thumbPreview=document.getElementById('thumbPreview');
 const AuthForm=document.getElementById('AuthForm');
 const formMessage=document.getElementById('formMessage');
 const randomThumb=document.getElementById('randomThumb');
-
 let editor;
+
+
+queryAdminCreate='Tạo bài viết';
 
 ClassicEditor.create(document.querySelector('#content')).then(newEditor => {
     editor=newEditor;
@@ -53,7 +55,6 @@ AuthForm.addEventListener('submit', function(res) {
         title.value=description.value=content.value='';
         categoryId.value='Chọn danh mục';
         let errr=err.response.data.errors;
-        // showErrorMessages(errr,formMessage);
     });
 })
 

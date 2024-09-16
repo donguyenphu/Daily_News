@@ -23,6 +23,8 @@ const ACCESS_TOKEN='ACCESS_TOKEN';
 dayjs.extend(window.dayjs_plugin_relativeTime);
 dayjs.locale('vi');
 
+const categoryArray=['$','Thế Giới','Thời Sự','Kinh Doanh','$','Giải Trí','Thể Thao','Pháp Luật','Giáo Dục','Sức Khỏe','Đời Sống','Du Lịch','Khoa Học','Số Hóa','Xe'];
+
 searchForm.addEventListener('submit', function(res) {
     res.preventDefault();
     let word=inpSearch.value.trim();
@@ -184,5 +186,4 @@ function preloader() {
 	$('#preloader').delay(1000).fadeOut();
 };
 
-/// <input type="text" placeholder="Enter your e-mail">
 

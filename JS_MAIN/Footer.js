@@ -89,23 +89,4 @@ class Footer extends HTMLElement {
 }
 
 
-{/* <div class="footer-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="footer-bottom-menu">
-                    <ul class="list-wrap">
-                        <li><a href="register.html">Chính sách và điều khoản</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="copyright-text">
-                    <p>© 2023 All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> */}
-
 customElements.define('x-footer',Footer);

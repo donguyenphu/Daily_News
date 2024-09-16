@@ -1,8 +1,11 @@
-console.log(123);
+let queryListArticle=document.querySelector('title');
+
 
 API.callWithToken().get('/auth/me').then((res) => {
-    
+    let info=res.data.data;
+    queryListArticle.innerHTML=`Danh Sách bài viết của ${info.email}`;
 }).catch((err) => {
+    queryListArticle.innerHTML=`Danh sách bài viết`;
     window.location.href='index.html';
 })
 
@@ -41,7 +44,6 @@ article.addEventListener('click', function(ev) {
     const el=ev.target;
     if (el.classList.contains('delete-article')) {
         API.callWithToken().delete(`/articles/${el.dataset.id}`).then((res) => {
-            // toastMessage('SUCCESS DELETE');
             window.location.reload();
         })
     }

@@ -1,5 +1,3 @@
-console.log(123123123);
-
 
 const RegisterFullForm = document.getElementById('RegisterFullForm');
 
@@ -54,18 +52,6 @@ GoogleMap.innerHTML= /* html */
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.8914518533043!2d106.67795077441353!3d20.916686380704796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7bfbc27bc233%3A0x89f213ed1023838c!2zSGFtIExvbmcgX3Ro4buLIHRy4bqlbiBuw7ppIMSRw6hvX2h1eeG7h24gdGjhu6d5IG5ndXnDqm5fdHAgaOG6o2kgcGjDsm5n!5e0!3m2!1svi!2s!4v1721462510445!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 `;
 
-/**
- * name
- * email
- * password
- * phone
- * address
- */
-
-
-// camelCase -> kieu lac da
-// yourName
-// myAge
 
 const token = localStorage.getItem('ACCESS_TOKEN');
 const name=document.getElementById('name');
@@ -73,38 +59,16 @@ const email=document.getElementById('email');
 const phone=document.getElementById('phone');
 const password=document.getElementById('password');
 const address=document.getElementById('address');
-// PascalCase
 let AuthForm=document.getElementById('AuthForm');
 let RegisterWrapper=document.getElementById('RegisterWrapper');
 const formMessage=document.getElementById('formMessage');
 
-// Python -> snake_case
-// your_name
-// my_age
-
-// let elInputName = document.getElementById('inputName');
-// let elInputEmail = document.getElementById('inputEmail');
-// let elInputPassword = document.getElementById('inputPassword');
 
 
 
 
-// console.log('NOW:',RegisterWrapper.innerHTML);
-
-/**
- * name
- * email
- * password
- * phone
- * address
- */
-
-
-AuthForm.addEventListener('submit', function(event) { /// no errors
+AuthForm.addEventListener('submit', function(event) { 
     event.preventDefault();
-    
-    // ngăn các hành động mặc định của phần tử html, ví dụ thẻ form sẽ có hành động submit, thẻ a sẽ có hành động chuyển hướng, ...
-    // ngăn chặn hành động mặc định của form là submit dữ liệu lên server theo url ở thuộc tính action
     const data = {
         name: name.value,
         email:email.value,
