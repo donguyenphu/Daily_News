@@ -1,4 +1,3 @@
-// 1:30p comments
 let WrapperNewsletter=document.getElementById('WrapperNewsletter');
 let RecentPostWrapper=document.getElementById('RecentPostWrapper');
 let RecentTitle=document.getElementById('RecentTitle');
@@ -201,7 +200,6 @@ function renderComment(COMMENTS) {
                                 <span class="date">${item.dateTime}</span>
                             </div>
                             <p>${item.content}</p>
-                            <a href="#" class="reply-btn">Reply</a>
                         </div>
                     </div>
                 </li>`;

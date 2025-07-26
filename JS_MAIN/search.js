@@ -24,9 +24,6 @@ if (isNaN(parseInt(first))===true) {
 getArticles(first);
 RecentPostsRender(RecentTitle,RecentPostWrapper);
 
-
-
-
 myPagination.addEventListener('click', function (e) {
     const el = e.target;
     if (el.classList.contains('number-link')) {

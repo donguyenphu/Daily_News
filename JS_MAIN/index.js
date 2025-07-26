@@ -17,7 +17,6 @@ const AnotherPopular = document.getAnimations('AnotherPopular');
 const fullAnotherPopular = document.getElementById('fullAnotherPopular');
 const SubmitForm = document.getElementById('SubmitForm');
 const fullScrollRightPosts = document.getElementById('fullScrollRightPosts');
-const onlyImg02 = document.getElementById('onlyImg02');
 const SubscribeFollowers = document.getElementById('SubscribeFollowers');
 const elCategoriesWithArticles = document.getElementById('categoriesWithArticles');
 
@@ -101,9 +100,7 @@ API.call().get('articles/popular?limit=5').then(function (res) {
                     </div>
                 </div>
             `;
-        } else {
-            adImage.src = item.thumb
-        }
+        } 
     });
     bigPost.innerHTML = htmlMain;
     smallPost.innerHTML = htmlMinor;
@@ -326,7 +323,6 @@ function renderCWASmallPostsOdd(items, category) {
 API.call().get('categories_news/articles?limit_cate=2&limit=4').then(res => {
     const data = res.data.data;
     let html = '';
-    console.log(data,329);
     
     
     data.forEach((item, idx) => {
@@ -465,9 +461,6 @@ API.call().get('articles/popular?limit=4').then(function (res) {
 
 
 
-SubFollow(SubscribeFollowers);
-
-
 API.call().get('articles/popular?limit=10').then(function (res) {
     let articles = res.data.data;
     let html = '';
@@ -540,39 +533,6 @@ API.call().get('articles/popular?limit=10').then(function (res) {
 });
 
 
-API.call().get('articles/popular?limit=1').then(function (res) {
-    const articles = res.data.data;
-    let html = '';
-    articles.forEach((item) => {
-        html +=
-            `
-            <a href="#">
-                <img src="${item.thumb}" alt="">
-            </a>
-        `;
-    });
-    onlyImg02.innerHTML = html;
-});
 
 
-
-function SubFollow(SubscribeFollowers) {
-    SubscribeFollowers.innerHTML =
-        `   
-        <div class="widget-title mb-30">
-            <h6 class="title">Mạng xã hội</h6>
-            <div class="section-title-line"></div>
-        </div>
-        <div class="sidebar-social-wrap">
-            <ul class="list-wrap">
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-facebook-f"></i>facebook</a></li>
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-twitter"></i>twitter</a></li>
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-instagram"></i>instagram</a></li>
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-youtube"></i>youtube</a></li>
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-linkedin-in"></i>LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/bestofsuy/"><i class="fab fa-pinterest-p"></i>Pinterest</a></li>
-            </ul>
-        </div>
-    `;
-}
 
